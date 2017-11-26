@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { LoginPage } from './login/LoginPage';
 import { AuthenticatedRoute } from './app/AuthenticatedRoute';
-import { AuthenticatedPage } from './app/AuthenticatedPage';
+import { AuthenticatedPage } from './app/AuthenticatedPage'
 
 export const LayoutSelector = (props) => (
     <Switch>

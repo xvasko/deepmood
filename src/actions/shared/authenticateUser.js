@@ -2,7 +2,7 @@ import { fetchAuthToken } from '../../utils/api/fetchAuthToken';
 import { receiveValidToken } from './actionCreators';
 import { push } from 'connected-react-router'
 
-export const authenticateUser = (destinationLocation) =>
+export const authenticateUser = () =>
     (dispatch) => {
         return fetchAuthToken('deepmood@gmail.com')
             .then((token) => {
