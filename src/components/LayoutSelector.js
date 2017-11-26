@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { LoginPage } from './login/LoginPage';
 import { AuthenticatedRoute } from './app/AuthenticatedRoute';
-import { DummyComponent } from './app/DummyComponent';
+import { AuthenticatedPage } from './app/AuthenticatedPage';
 
 export const LayoutSelector = (props) => (
     <Switch>
         <Route path='/login' component={LoginPage} />
-        <AuthenticatedRoute path='/' component={DummyComponent} isAuthenticated={props.isAuthenticated} />
+        <AuthenticatedRoute component={AuthenticatedPage} isAuthenticated={props.isAuthenticated} />
     </Switch>
 );
 

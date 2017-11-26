@@ -4,3 +4,7 @@ export const receiveValidToken = (token) => ({
         token,
     }
 });
+
+export const invalidateToken = () => ({
+    type: 'AUTHENTICATION_INVALIDATE_TOKEN',
+})
