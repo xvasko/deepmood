@@ -10,7 +10,6 @@ export const authenticateUser = (destinationLocation) =>
                 dispatch(push('/'));
 
                 localStorage.setItem('sharedAuthenticationToken', JSON.stringify(token));
-                localStorage.setItem('sharedAuthenticationTokenTimeStamp', JSON.stringify(new Date().getTime()));
             })
             .catch((error) => {
                 console.log(error);
