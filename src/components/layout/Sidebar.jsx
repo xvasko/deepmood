@@ -1,6 +1,7 @@
 import React from 'react';
 import { LogoutButton } from '../../containers-redux/app/LogoutButton'
 import { SidebarItem } from './SidebarItem'
+import { CreateChannelButton } from '../../containers-redux/channels/CreateChannelButton'
 
 var style = {
     position: 'fixed',
@@ -24,7 +25,7 @@ class Sidebar extends React.Component {
         ) : <p>no channels...</p>
         return (
             <div style={style}>
-                <LogoutButton />
+                <LogoutButton /> <CreateChannelButton />
                 <br/>
                 <ul>
                     {channels}
