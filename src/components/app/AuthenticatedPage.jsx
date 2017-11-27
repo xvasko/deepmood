@@ -1,17 +1,10 @@
 import * as React from 'react';
-import { LogoutButton } from '../../containers-redux/app/LogoutButton'
-import { CreateChannelButton } from '../../containers-redux/channels/CreateChannelButton'
+import { MainContent } from '../layout/MainContent'
+import { SidebarRedux } from '../../containers-redux/layout/Sidebar'
 
 export const AuthenticatedPage = () => (
     <div>
-        <div>
-            <span>This is header</span>
-            <LogoutButton />
-        </div>
-        <div>
-            <span>this is body</span>
-            <br/>
-            <CreateChannelButton />
-        </div>
+        <SidebarRedux />
+        <MainContent />
     </div>
 );

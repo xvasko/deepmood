@@ -9,6 +9,7 @@
     "immutable": "^3.8.2",
     "isomorphic-fetch": "^2.2.1",
     "jwt-decode": "^2.2.0",
+    "memoizee": "^0.4.11",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-redux": "^5.0.6",

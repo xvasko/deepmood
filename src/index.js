@@ -10,8 +10,6 @@ import { fetchExistingChannels } from './actions/channels/fetchExistingChannels'
 const history = createHashHistory();
 const store = createStore(history);
 
-fetchExistingChannels(store)
-
 render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
