@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { validateResponse } from '../../utils/api/validateResponse'
 
 export const fetchExistingChannels = () =>
     (dispatch, getState) => {
@@ -8,7 +7,7 @@ export const fetchExistingChannels = () =>
                 (result) => result.data.channels
                 .filter(channel => !getState().channels.allIds.includes(channel.id))
                 .map(channel => dispatch({type: 'CHANNELS_CREATE_CHANNEL', payload: channel}))
-            ).then(validateResponse)
+            )
             .catch((error) =>
                 console.log(error)
             );

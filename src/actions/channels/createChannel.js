@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { getAuthorizedHeader } from '../../utils/api/headers';
-import { validateResponse } from '../../utils/api/validateResponse'
 
 export const createChannel = () =>
     (dispatch, getState) => {
@@ -9,11 +8,10 @@ export const createChannel = () =>
                 getAuthorizedHeader(getState().authentication.token.data)
             )
             .then((result) =>
-                    result.data.channels
+                result.data.channels
                     .filter(channel => !getState().channels.allIds.includes(channel.id))
                     .map(channel => dispatch({type: 'CHANNELS_CREATE_CHANNEL', payload: channel}))
             )
-            .then(validateResponse)
             .catch((error) =>
                 console.log(error)
             );

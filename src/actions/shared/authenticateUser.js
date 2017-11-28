@@ -1,12 +1,13 @@
-import { receiveValidToken } from './actionCreators';
+import { receiveValidToken, startAuthentication, endAuthentication } from './actionCreators'
 import { push } from 'connected-react-router'
 import { API_AUTH_URI } from '../../constants/api'
 import axios from 'axios';
-import { validateResponse } from '../../utils/api/validateResponse'
 import { getHeader } from '../../utils/api/headers'
 
 export const authenticateUser = () =>
     (dispatch) => {
+        dispatch(startAuthentication());
+
         axios.post(API_AUTH_URI,
             JSON.stringify('deepmood@gmail.com'),
             getHeader()
@@ -17,7 +18,6 @@ export const authenticateUser = () =>
 
                 localStorage.setItem('sharedAuthenticationToken', JSON.stringify(token));
             })
-            .then(validateResponse)
             .catch((error) => {
                 console.log(error);
             });

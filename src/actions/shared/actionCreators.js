@@ -8,3 +8,7 @@ export const receiveValidToken = (token) => ({
 export const invalidateToken = () => ({
     type: 'AUTHENTICATION_INVALIDATE_TOKEN',
 })
+
+export const startAuthentication = () => ({
+    type: 'SHARED_FETCH_START',
+})
