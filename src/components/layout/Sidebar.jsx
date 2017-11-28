@@ -26,7 +26,7 @@ class Sidebar extends React.Component {
                 <LogoutButton /> <CreateChannelButton />
                 <br/>
                 <Loader stateLoadingSelector={state => state.channels.isFetchingChannels}>
-                    <ul style={{minHeight: '100px'}}>
+                    <ul style={{minHeight: '250px'}}>
                         {channels}
                     </ul>
                 </Loader>

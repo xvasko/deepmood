@@ -1,12 +1,23 @@
 import React from 'react';
 import AdvancedLoader from 'react-loader-advanced';
+import { SavingSpinner } from './SavingSpinner'
 
-export const Loader = ({children, isLoading}) => (
+const LoadingMessage = ({ message }) => (
+    <div>
+        <SavingSpinner />
+        <div>
+            { message || 'Loading' }
+        </div>
+    </div>
+);
+
+export const Loader = ({children, isLoading, message}) => (
     <AdvancedLoader
         show={isLoading}
-        message={'loading...'}
-        backgroundStyle={{ borderRadius: '6px', backgroundColor: 'red' }}
-        hideContentOnLoad
+        message={<LoadingMessage message={message} />}
+        backgroundStyle={{ borderRadius: '6px'}}
+        contentBlur={1}
+        //hideContentOnLoad
     >
         {children}
     </AdvancedLoader>

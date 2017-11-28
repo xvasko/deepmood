@@ -3,6 +3,7 @@ import { push } from 'connected-react-router'
 import { API_AUTH_URI } from '../../constants/api'
 import axios from 'axios';
 import { getHeader } from '../../utils/api/headers'
+import { postponeFor } from '../../utils/utils'
 
 export const authenticateUser = () =>
     (dispatch) => {
@@ -13,8 +14,11 @@ export const authenticateUser = () =>
             getHeader()
             )
             .then(token => {
-                dispatch(receiveValidToken(token));
-                dispatch(push('/'));
+                postponeFor(500).then(() => {
+                    dispatch(receiveValidToken(token));
+                    dispatch(push('/'));
+                })
+
 
                 localStorage.setItem('sharedAuthenticationToken', JSON.stringify(token));
             })

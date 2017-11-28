@@ -2,7 +2,7 @@ import React from 'react';
 
 export const LoginForm = (props) => {
     return (
-        <form>
+        <form style={{minHeight: '250px'}}>
             <label>Username / Email</label>
             <input type='email'/>
             <br/>
