@@ -10,5 +10,5 @@ export const invalidateToken = () => ({
 })
 
 export const startAuthentication = () => ({
-    type: 'SHARED_FETCH_START',
+    type: 'SHARED_AUTHENTICATION_START',
 })

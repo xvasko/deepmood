@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { Loader } from '../../components/shared/Loader.jsx';
 
 const mapStateToProps = (state, ownProps) => ({
-    isLoading: state.shared.isAuthenticating,
+    isLoading: ownProps.stateLoadingSelector(state),
 });
 
 const enhancer = connect(mapStateToProps);

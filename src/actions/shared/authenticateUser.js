@@ -1,4 +1,4 @@
-import { receiveValidToken, startAuthentication, endAuthentication } from './actionCreators'
+import { receiveValidToken, startAuthentication } from './actionCreators'
 import { push } from 'connected-react-router'
 import { API_AUTH_URI } from '../../constants/api'
 import axios from 'axios';
@@ -12,13 +12,13 @@ export const authenticateUser = () =>
             JSON.stringify('deepmood@gmail.com'),
             getHeader()
             )
-            .then((token) => {
+            .then(token => {
                 dispatch(receiveValidToken(token));
                 dispatch(push('/'));
 
                 localStorage.setItem('sharedAuthenticationToken', JSON.stringify(token));
             })
-            .catch((error) => {
+            .catch(error => {
                 console.log(error);
             });
     };
