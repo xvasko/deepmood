@@ -6,18 +6,22 @@ var style = {
     background: 'gray'
 };
 
-const MainContent = () => (
-    <div style={style}>
-        <div>
-            <ul>
-                <li>message 1</li>
-                <li>message 2</li>
-            </ul>
-        </div>
-        <div>
-            <MessagesForm/>
-        </div>
-    </div>
-)
+class MainContent extends React.Component {
+    render() {
+        let messages = this.props.messages? this.props.messages.map(message => <li key={message.id}>message.value</li> ) : <li>no message</li>
+        return (
+            <div style={style}>
+                <div>
+                    <ul>
+                        {messages}
+                    </ul>
+                </div>
+                <div>
+                    <MessagesForm/>
+                </div>
+            </div>
+        )
+    }
+}
 
 export { MainContent };

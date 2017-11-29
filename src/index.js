@@ -10,9 +10,7 @@ import { fetchExistingChannels } from './actions/channels/fetchExistingChannels'
 const history = createHashHistory();
 const store = createStore(history);
 
-console.log('DOPICEEEEEEEEE')
 fetchExistingChannels(store);
-console.log('DOPICEEEEEEEEE')
 
 render(
     <Provider store={store}>

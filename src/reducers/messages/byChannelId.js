@@ -6,7 +6,7 @@ export const byChannelId = (previousState = Immutable.Map(), action) => {
             return previousState.set(action.payload.id, Immutable.List());
         case 'CHANNELS_REMOVE_CHANNEL':
             return previousState.delete(action.payload);
-        case 'CHANNELS_CREATE_MESSAGE':
+        case 'MESSAGES_CREATE_MESSAGE':
             return previousState.set(action.payload.channelId, previousState.get(action.payload.channelId).push(action.payload.data));
         default:
             return previousState;

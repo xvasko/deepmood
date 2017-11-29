@@ -8,7 +8,7 @@ export const createMessage = (channelId, message) =>
             getAuthorizedHeader(getState().authentication.token.data)
         )
             .then((result) =>
-                dispatch({type: 'CHANNELS_CREATE_MESSAGE', payload: { channelId: '43303430-1d01-472e-aef9-6eb0dda69549', data: result.data}})
+                dispatch({type: 'MESSAGES_CREATE_MESSAGE', payload: { channelId: '43303430-1d01-472e-aef9-6eb0dda69549', data: result.data}})
             )
             .catch((error) =>
                 console.log(error)
