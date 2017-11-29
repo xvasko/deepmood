@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { getAuthorizedHeader } from '../../utils/api/headers';
 
-export const createChannel = () =>
+export const createChannel = (name) =>
     (dispatch, getState) => {
         axios.patch('https://pv247messaging.azurewebsites.net/api/app/6facb4bd-c869-4cd3-8fe8-af81e15a5502',
-                JSON.stringify([{"X@X!Xpath": "/channels/-","op":"add","value":{"name":"team-building"}}]),
+                JSON.stringify([{"path": "/channels/-","op":"add","value":{"name":`${name}`}}]),
                 getAuthorizedHeader(getState().authentication.token.data)
             )
             .then((result) =>

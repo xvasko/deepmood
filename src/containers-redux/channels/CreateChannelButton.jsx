@@ -3,8 +3,8 @@ import { CreateChannelButton } from '../../components/channels/CreateChannelButt
 import { createChannel } from '../../actions/channels/createChannel';
 
 const mapDispatchToProps = (dispatch) => ({
-    onClick: () => {
-        dispatch(createChannel());
+    onClick: (name) => {
+        dispatch(createChannel(name));
     }
 });
 
