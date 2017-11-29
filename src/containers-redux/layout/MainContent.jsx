@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { Sidebar } from '../../components/layout/MainContent';
+import { MainContent } from '../../components/layout/MainContent';
 
 const mapStateToProps = (state) => {
     return {
-        messages: state.messages.byChannelId.get(state.channels.activeChannel),
+        messages: state.messages.byChannelId.get('43303430-1d01-472e-aef9-6eb0dda69549'),
     }};
 
 const enhancer = connect(mapStateToProps, undefined);

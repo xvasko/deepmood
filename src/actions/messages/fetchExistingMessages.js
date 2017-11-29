@@ -12,9 +12,8 @@ export const fetchExistingMessages = (channelId) =>
                 //    dispatch(endChannelFetch())
                 //})
 
-                console.log(result.data);
                 result.data
-                    .filter(message => !getState().messages.byChannelId.get(channelId).includes(message.id))
+                    .filter(message => !getState().messages.byChannelId.get(channelId).some(m => m.id == message.id))
                     .map(message => dispatch({
                             type: 'MESSAGES_CREATE_MESSAGE',
                             payload: { channelId: `${channelId}`, data: result.data.pop()}
