@@ -16,11 +16,12 @@ var style = {
 
 class Sidebar extends React.Component {
     componentWillMount() {
+        console.log('componentWillMount');
         this.props.onComponentWillMount();
     }
 
     render() {
-        let channels = this.props.channels.map(channel => <SidebarItem key={channel.id} channelName={channel.name}/>)
+        let channels = this.props.channels.map(channel => <SidebarItem key={channel.id} channelId={channel.id} channelName={channel.name}/>)
         return (
             <div style={style}>
                 <LogoutButton /> <CreateChannelButton />
