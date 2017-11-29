@@ -17,3 +17,4 @@ export const createStore = (history) => {
         composeEnhancers(applyMiddleware(routerMiddleware(history), thunk, createLogger()))
     );
 }
+

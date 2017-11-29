@@ -1,8 +1,8 @@
 import React from 'react';
 import { LogoutButton } from '../../containers-redux/app/LogoutButton'
-import { SidebarItem } from './SidebarItem'
 import { CreateChannelButton } from '../../containers-redux/channels/CreateChannelButton'
 import { Loader } from '../../containers-redux/shared/Loader'
+import { SidebarItem } from '../../containers-redux/layout/SidebarItem'
 
 var style = {
     position: 'fixed',
@@ -15,11 +15,6 @@ var style = {
 };
 
 class Sidebar extends React.Component {
-    componentWillMount() {
-        console.log('componentWillMount');
-        this.props.onComponentWillMount();
-    }
-
     render() {
         let channels = this.props.channels.map(channel => <SidebarItem key={channel.id} channelId={channel.id} channelName={channel.name}/>)
         return (

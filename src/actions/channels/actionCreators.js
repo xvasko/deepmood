@@ -5,3 +5,8 @@ export const startChannelFetch = () => ({
 export const endChannelFetch = () => ({
     type: 'CHANNELS_FETCH_END',
 })
+
+export const changeActiveChannel = (channelName) => ({
+    type: 'CHANNELS_CHANGE_ACTIVE_CHANNEL',
+    payload: channelName,
+})

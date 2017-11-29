@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { Sidebar } from '../../components/layout/Sidebar';
 import memoizee from 'memoizee';
-import { fetchExistingChannels } from '../../actions/channels/fetchExistingChannels';
 
 const getChannels = (channels) => channels.allIds.map(id => channels.byId.get(id)).toList();
 const getMemoizedChannels = memoizee(getChannels);
@@ -13,11 +12,7 @@ const mapStateToProps = (state) => {
         return { channels: [] };
     }};
 
-const mapDispatchToProps = (dispatch) => ({
-    onComponentWillMount: () => dispatch(fetchExistingChannels())
-});
-
-const enhancer = connect(mapStateToProps, mapDispatchToProps);
+const enhancer = connect(mapStateToProps, undefined);
 const connectedComponent = enhancer(Sidebar);
 
 export { connectedComponent as SidebarRedux }
