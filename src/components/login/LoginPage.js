@@ -6,7 +6,7 @@ export const LoginPage = () => {
     return (
         <div>
             <h1>Login page</h1>
-            <Loader stateLoadingSelector={state => state.shared.isAuthenticating}>
+            <Loader stateLoadingSelector={state => state.authentication.isAuthenticating}>
                 <LoginForm />
             </Loader>
         </div>
