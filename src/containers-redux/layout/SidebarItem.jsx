@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { SidebarItem } from '../../components/layout/SidebarItem'
-import { changeActiveChannel } from '../../actions/channels/actionCreators'
+import { fetchExistingMessages } from '../../actions/messages/fetchExistingMessages'
 
 const mapDispatchToProps = (dispatch) => ({
-    onClick: (channelName) => dispatch(changeActiveChannel(channelName))
+    onClick: (channelId) => dispatch(fetchExistingMessages(channelId))
 });
 
 const enhancer = connect(undefined, mapDispatchToProps);

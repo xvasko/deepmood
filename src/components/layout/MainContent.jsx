@@ -8,7 +8,7 @@ var style = {
 
 class MainContent extends React.Component {
     render() {
-        let messages = this.props.messages ? this.props.messages.map(message => <li key={message.id}>{message.value}</li> ) : <li>no message</li>
+        let messages = this.props.messages ? this.props.messages.map(message => <li key={message.id}>{message.value}</li>) : <li>no messages</li>
         return (
             <div style={style}>
                 <div>

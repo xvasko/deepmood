@@ -1,6 +1,7 @@
 import { getAuthorizedHeader } from '../../utils/api/headers'
 import axios from 'axios';
 import { postponeFor } from '../../utils/utils'
+import { changeActiveChannel } from '../channels/actionCreators'
 
 export const fetchExistingMessages = (channelId) =>
     (dispatch, getState) => {
@@ -8,9 +9,8 @@ export const fetchExistingMessages = (channelId) =>
             getAuthorizedHeader(getState().authentication.token.data)
         )
             .then((result) => {
-                //postponeFor(500).then(() => {
-                //    dispatch(endChannelFetch())
-                //})
+
+                dispatch(changeActiveChannel(channelId));
 
                 result.data
                     .filter(message => !getState().messages.byChannelId.get(channelId).some(m => m.id == message.id))

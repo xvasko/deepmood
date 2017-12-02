@@ -17,7 +17,7 @@ export class MessagesForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.onSubmit('43303430-1d01-472e-aef9-6eb0dda69549', this.state.value);
+        this.props.onSubmit(this.props.activeChannel, this.state.value);
         this.setState({value: ''})
     }
 

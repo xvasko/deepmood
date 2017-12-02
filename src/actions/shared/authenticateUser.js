@@ -4,10 +4,15 @@ import { API_AUTH_URI } from '../../constants/api'
 import axios from 'axios';
 import { getHeader } from '../../utils/api/headers'
 import { postponeFor } from '../../utils/utils'
+import { fetchExistingMessages } from '../messages/fetchExistingMessages'
 
 export const authenticateUser = () =>
-    (dispatch) => {
+    (dispatch, getState) => {
         dispatch(startAuthentication());
+
+        if (getState().channels.activeChannel) {
+
+        }
 
         axios.post(API_AUTH_URI,
             JSON.stringify('deepmood@gmail.com'),
@@ -16,7 +21,7 @@ export const authenticateUser = () =>
             .then(token => {
                 postponeFor(500).then(() => {
                     dispatch(receiveValidToken(token));
-                    dispatch(push('/'));
+                    dispatch(push('/')); // TODO ked nebudes mat channely
                 })
 
 
