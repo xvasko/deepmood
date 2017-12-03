@@ -12,7 +12,7 @@ export const authenticateUser = () =>
         dispatch(startAuthentication());
 
         axios.post(API_AUTH_URI,
-            JSON.stringify('deepmood@gmail.com'),
+            JSON.stringify('user@gmail.com'), //
             getHeader()
             )
             .then(token => {
