@@ -16,11 +16,16 @@ var style = {
 };
 
 class Sidebar extends React.Component {
+    onOpenProfile(e) {
+        e.preventDefault();
+        this.props.onOpenProfile();
+    }
+
     render() {
         let channels = this.props.channels.map(channel => <SidebarItem key={channel.id} channelId={channel.id} channelName={channel.name}/>)
         return (
             <div style={style}>
-                Logged as <strong>{getCurrentUser()}</strong><br/>
+                Logged as <a href={'#'} onClick={(e) => this.onOpenProfile(e)}>{getCurrentUser()}</a><br/>
                 <LogoutButton /> <CreateChannelButton />
                 <br/>
                 <Loader stateLoadingSelector={state => state.channels.isFetchingChannels}>

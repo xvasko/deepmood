@@ -1,6 +1,5 @@
 import { getAuthorizedHeader } from '../../utils/api/headers'
 import axios from 'axios';
-import { postponeFor } from '../../utils/utils'
 import { changeActiveChannel } from '../channels/actionCreators'
 
 export const fetchExistingMessages = (channelId) =>
