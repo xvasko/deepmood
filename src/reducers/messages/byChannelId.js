@@ -10,6 +10,8 @@ export const byChannelId = (previousState = Immutable.Map(), action) => {
             return previousState.set(action.payload.channelId, previousState.get(action.payload.channelId).push(action.payload.data));
         case 'MESSAGES_REMOVE_MESSAGE':
             return previousState.set(action.payload.channelId, previousState.get(action.payload.channelId).filter(message => message.id !== action.payload.messageId));
+        case 'MESSAGES_UPDATE_MESSAGE':
+            return previousState.set(action.payload.channelId, previousState.get(action.payload.channelId).update(previousState.get(action.payload.channelId).findIndex(message => message.id == action.payload.messageId), message => {return {...message, value: action.payload.editedMessage}}));
         default:
             return previousState;
     }
