@@ -4,7 +4,7 @@ import { getAuthorizedHeader } from '../../utils/api/headers'
 export const updateProfileDetails = (email, customData) =>
     (dispatch, getState) => {
         axios.put(`https://pv247messaging.azurewebsites.net/api/6facb4bd-c869-4cd3-8fe8-af81e15a5502/user/${email}`,
-            JSON.stringify(`{ "name": "${customData.name}", "phone": "${customData.phone}", "avatarId": "${customData.avatarId}", "channels": []}`),
+            JSON.stringify(`{ "name": "${customData.name}", "phone": "${customData.phone}", "avatarId": "${customData.avatarId}", "channels": ${JSON.stringify(customData.channels)}}`),
             getAuthorizedHeader(getState().authentication.token.data)
         )
             .then((result) => {

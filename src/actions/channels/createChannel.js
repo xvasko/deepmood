@@ -20,6 +20,7 @@ export const createChannel = (name) =>
 
                         var newChannels = profileDetails.channels.toArray()
                         newChannels.push(channel.id)
+                        console.log(channel.id);
 
                         dispatch(updateProfileDetails(profileDetails.email, {
                             name: profileDetails.name,

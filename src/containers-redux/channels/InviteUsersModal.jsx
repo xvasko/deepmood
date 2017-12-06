@@ -6,7 +6,8 @@ const mapStateToProps = (state) => {
     return {
         isOpen: state.channels.isInviteModalOpen,
         channelId: state.channels.activeChannel,
-        channelName: state.channels.activeChannel ? state.channels.byId.get(state.channels.activeChannel).name : "no active channel"
+        channelName: state.channels.activeChannel ? state.channels.byId.get(state.channels.activeChannel).name : "no active channel",
+        users: state.users.byId.values()
     }};
 
 const mapDispatchToProps = (dispatch) => ({
