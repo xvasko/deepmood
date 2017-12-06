@@ -6,5 +6,5 @@ import { avatarUri } from './avatarUri'
 export const profile = combineReducers({
     isProfileOpen,
     profileDetails,
-    avatarUri
+    avatarUri,
 });

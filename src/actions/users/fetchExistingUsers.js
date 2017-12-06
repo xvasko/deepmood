@@ -8,7 +8,6 @@ export const fetchExistingUsers = () =>
             getAuthorizedHeader(getState().authentication.token.data)
         )
             .then(result => {
-                console.log(result)
                 result.data.map(user => dispatch({type: 'USERS_CREATE_USER', payload: user}))
                 }
             )

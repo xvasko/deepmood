@@ -5,6 +5,8 @@ import { closeInviteUsersModal } from '../../actions/channels/actionCreators'
 const mapStateToProps = (state) => {
     return {
         isOpen: state.channels.isInviteModalOpen,
+        channelId: state.channels.activeChannel,
+        channelName: state.channels.activeChannel ? state.channels.byId.get(state.channels.activeChannel).name : "no active channel"
     }};
 
 const mapDispatchToProps = (dispatch) => ({

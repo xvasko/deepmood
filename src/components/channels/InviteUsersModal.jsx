@@ -13,7 +13,8 @@ export class InviteUsersModal extends React.Component {
                 isOpen={this.props.isOpen}
                 shouldCloseOnOverlayClick={true}
             >
-                piceeeeeeeees
+                {this.props.channelName} <br/>
+                {this.props.channelId} <br/>
                 <button onClick={() => this.props.onCloseInviteUsersModal()}>Close Modal</button>
             </ReactModal>
         );

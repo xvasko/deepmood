@@ -33,7 +33,8 @@ export class ProfileForm extends React.Component {
         var customData = {
             name: this.state.newName,
             phone: this.state.newPhone,
-            avatarId: this.state.avatarId
+            avatarId: this.state.avatarId,
+            channels: this.props.channels
         }
         this.props.onSubmit(this.props.email, customData);
     }
