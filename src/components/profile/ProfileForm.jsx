@@ -4,22 +4,38 @@ export class ProfileForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: this.props.name,
-            phone: this.props.phone,
-            avatarId: this.props.avatarId
+            oldName: this.props.name,
+            oldPhone: this.props.phone,
+            newName: this.props.name,
+            newPhone: this.props.phone,
+            avatarId: this.props.avatarId,
+            isUpdateDisabled: true
         };
     }
 
+    toggleUploadButton() {
+        if (this.state.oldName !== this.state.newName || this.state.oldPhone !== this.state.newPhone) {
+            this.setState({isUpdateDisabled: false})
+        } else {
+            this.setState({isUpdateDisabled: true})
+        }
+    }
+
     handleNameChange(e) {
-        this.setState({name: e.target.value})
+        this.setState({newName: e.target.value}, this.toggleUploadButton)
     }
 
     handlePhoneChange(e) {
-        this.setState({phone: e.target.value})
+        this.setState({newPhone: e.target.value}, this.toggleUploadButton)
     }
 
     handleSubmit() {
-        this.props.onSubmit(this.props.email, this.state);
+        var customData = {
+            name: this.state.newName,
+            phone: this.state.newPhone,
+            avatarId: this.state.avatarId
+        }
+        this.props.onSubmit(this.props.email, customData);
     }
 
     render() {
@@ -28,15 +44,17 @@ export class ProfileForm extends React.Component {
                 <label>Username / Email</label>
                 <input value={this.props.email} disabled /><br/>
                 <label>Name</label>
-                <input type='text' value={this.state.name} onChange={(e) => this.handleNameChange(e)}/><br/>
+                <input type='text' value={this.state.newName} onChange={(e) => this.handleNameChange(e)}/><br/>
                 <label>Phone number</label>
-                <input type='number' value={this.state.phone} onChange={(e) => this.handlePhoneChange(e)}/><br/>
+                <input type='number' value={this.state.newPhone} onChange={(e) => this.handlePhoneChange(e)}/><br/>
                 <button
                     type='button'
                     onClick={() => this.handleSubmit()}
+                    disabled={this.state.isUpdateDisabled}
                 >
                     Update
                 </button>
+                <button onClick={(e)=>{e.preventDefault();console.log(this.state)}}>getState</button>
             </form>
         );
     }

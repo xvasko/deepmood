@@ -2,8 +2,23 @@ import * as React from 'react';
 import { AvatarImage } from './Avatar.styles'
 
 export class Avatar extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            isUploadDisabled: true,
+        }
+    }
+
+    toggleUploadButton() {
+        if (document.getElementById('file').files.length === 1) {
+            this.setState({isUploadDisabled: false})
+        } else {
+            this.setState({isUploadDisabled: true})
+        }
+    }
+
+
     onUpload() {
-        console.log(document.getElementById('file').files);
         this.props.onUpload(document.getElementById('file').files);
     }
 
@@ -14,9 +29,9 @@ export class Avatar extends React.Component {
                     alt='Profile picture'
                     src={this.props.uri}
                 />
-                <input id="file" type="file" />
+                <input id="file" type="file" onChange={() => this.toggleUploadButton()} />
                 <br/>
-                <button onClick={() => this.onUpload()}>Upload</button>
+                <button disabled={this.state.isUploadDisabled} onClick={() => this.onUpload()}>Upload</button>
             </div>
         )
     }
