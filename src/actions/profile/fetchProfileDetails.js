@@ -1,5 +1,6 @@
 import { getAuthorizedHeader } from '../../utils/api/headers'
 import axios from 'axios';
+import { fetchUserAvatar } from './fetchUserAvatar'
 
 export const fetchProfileDetails = (email) =>
     (dispatch, getState) => {
@@ -8,6 +9,7 @@ export const fetchProfileDetails = (email) =>
         )
             .then((result) => {
                 dispatch({type: 'PROFILE_DETAILS_FETCH', payload: result.data})
+                dispatch(fetchUserAvatar(getState().profile.profileDetails.avatarId))
             })
             .catch((error) =>
                 console.log(error)

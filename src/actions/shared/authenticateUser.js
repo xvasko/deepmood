@@ -4,10 +4,7 @@ import { API_AUTH_URI } from '../../constants/api'
 import axios from 'axios';
 import { getHeader } from '../../utils/api/headers'
 import { postponeFor } from '../../utils/utils'
-import { fetchExistingMessages } from '../messages/fetchExistingMessages'
-import { changeActiveChannel } from '../channels/actionCreators'
 import { fetchProfileDetails } from '../profile/fetchProfileDetails'
-import { fetchUserAvatar } from '../profile/fetchUserAvatar'
 
 export const authenticateUser = () =>
     (dispatch, getState) => {
@@ -22,7 +19,6 @@ export const authenticateUser = () =>
                     dispatch(receiveValidToken(token));
                     dispatch(push('/'));
                     dispatch(fetchProfileDetails('homo@habilis.com'));
-                    dispatch(fetchUserAvatar('fb4933a5-bebf-474a-aff6-d736649a0f93'));
                 })
 
                 localStorage.setItem('sharedAuthenticationToken', JSON.stringify(token));

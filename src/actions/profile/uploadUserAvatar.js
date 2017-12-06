@@ -13,6 +13,8 @@ export const uploadUserAvatar = (file) =>
         axios.post('https://pv247messaging.azurewebsites.net/api/file',
             formData,
             getAuthorizedHeader(getState().authentication.token.data))
-            .then(response => dispatch({action: 'PROFILE_UPDATE_AVATAR_URI', payload: response.data[0]}))
+            .then(response => {
+                    dispatch({action: 'PROFILE_UPDATE_AVATAR_ID', payload: response.data[0]})
+                })
 
     }
