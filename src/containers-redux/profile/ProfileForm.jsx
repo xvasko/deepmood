@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
     }};
 
 const mapDispatchToProps = (dispatch) => ({
-    onSubmit: (email, newDetails, avatarId) => {
-        dispatch(updateProfileDetails(email, newDetails, avatarId));
+    onSubmit: (email, newDetails) => {
+        dispatch(updateProfileDetails(email, newDetails));
     }
 });
 

@@ -16,6 +16,11 @@ export const profileDetails = (state = initialState, action) => {
                 avatarId: (customData.avatarId === "null" ? null : customData.avatarId)
             }
             break;
+        case 'PROFILE_UPDATE_AVATAR_ID':
+            state = {
+                ...state,
+                avatarId: action.payload.id
+            }
     }
     return state;
 };

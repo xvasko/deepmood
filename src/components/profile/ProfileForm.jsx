@@ -6,6 +6,7 @@ export class ProfileForm extends React.Component {
         this.state = {
             name: this.props.name,
             phone: this.props.phone,
+            avatarId: this.props.avatarId
         };
     }
 
@@ -18,7 +19,7 @@ export class ProfileForm extends React.Component {
     }
 
     handleSubmit() {
-        this.props.onSubmit(this.props.email, this.state, this.props.avatarId);
+        this.props.onSubmit(this.props.email, this.state);
     }
 
     render() {

@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { getAuthorizedHeader } from '../../utils/api/headers'
+import { fetchUserAvatar } from './fetchUserAvatar'
+import { updateProfileDetails } from './updateProfileDetails'
 
 export const uploadUserAvatar = (file) =>
     (dispatch, getState) => {
@@ -14,7 +16,14 @@ export const uploadUserAvatar = (file) =>
             formData,
             getAuthorizedHeader(getState().authentication.token.data))
             .then(response => {
-                    dispatch({action: 'PROFILE_UPDATE_AVATAR_ID', payload: response.data[0]})
+                    dispatch({type: 'PROFILE_UPDATE_AVATAR_ID', payload: response.data[0]})
+
+                    var profileDetails = getState().profile.profileDetails;
+
+                    console.log(getState().profile.profileDetails)
+
+                    dispatch(updateProfileDetails(profileDetails.email, profileDetails))
+                    dispatch(fetchUserAvatar(profileDetails.avatarId))
                 })
 
     }
