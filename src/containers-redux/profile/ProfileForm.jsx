@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
 import { ProfileForm } from '../../components/profile/ProfileForm'
-import { updateProfile } from '../../actions/profile/updateProfile'
+import { updateProfileDetails } from '../../actions/profile/updateProfileDetails'
 
 const mapStateToProps = (state) => {
     return {
         email: state.profile.profileDetails.email,
         name: state.profile.profileDetails.name,
-        phone: state.profile.profileDetails.phone
+        phone: state.profile.profileDetails.phone,
+        avatarId: state.profile.profileDetails.avatarId
     }};
 
 const mapDispatchToProps = (dispatch) => ({
-    onSubmit: (email, newDetails) => {
-        dispatch(updateProfile(email, newDetails));
+    onSubmit: (email, newDetails, avatarId) => {
+        dispatch(updateProfileDetails(email, newDetails, avatarId));
     }
 });
 

@@ -1,7 +1,8 @@
 const initialState = {
     email: null,
     name: null,
-    phone: null
+    phone: null,
+    avatarId: null
 };
 
 export const profileDetails = (state = initialState, action) => {
@@ -11,7 +12,8 @@ export const profileDetails = (state = initialState, action) => {
             state = {
                 email: action.payload.email,
                 name: customData.name,
-                phone: customData.phone
+                phone: customData.phone,
+                avatarId: (customData.avatarId === "null" ? null : customData.avatarId)
             }
             break;
     }
