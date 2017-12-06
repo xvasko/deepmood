@@ -54,7 +54,6 @@ export class ProfileForm extends React.Component {
                 >
                     Update
                 </button>
-                <button onClick={(e)=>{e.preventDefault();console.log(this.state)}}>getState</button>
             </form>
         );
     }

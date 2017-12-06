@@ -3,10 +3,12 @@ import { authentication } from './authentication/authentication';
 import { channels } from './channels/channels'
 import { messages } from './messages/messages'
 import { profile } from './profile/profile'
+import { users } from './users/users'
 
 export const appReducer = combineReducers({
     authentication,
     profile,
     channels,
-    messages
+    messages,
+    users
 });

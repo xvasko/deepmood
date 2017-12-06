@@ -5,6 +5,7 @@ import axios from 'axios';
 import { getHeader } from '../../utils/api/headers'
 import { postponeFor } from '../../utils/utils'
 import { fetchProfileDetails } from '../profile/fetchProfileDetails'
+import { fetchExistingUsers } from '../users/fetchExistingUsers'
 
 export const authenticateUser = () =>
     (dispatch, getState) => {
@@ -19,6 +20,7 @@ export const authenticateUser = () =>
                     dispatch(receiveValidToken(token));
                     dispatch(push('/'));
                     dispatch(fetchProfileDetails('homo@habilis.com'));
+                    dispatch(fetchExistingUsers())
                 })
 
                 localStorage.setItem('sharedAuthenticationToken', JSON.stringify(token));

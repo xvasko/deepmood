@@ -10,3 +10,12 @@ export const changeActiveChannel = (channelId) => ({
     type: 'CHANNELS_CHANGE_ACTIVE_CHANNEL',
     payload: channelId,
 })
+
+export const openInviteUsersModal = () => ({
+    type: 'INVITE_MODAL_OPEN',
+});
+
+export const closeInviteUsersModal = () => ({
+    type: 'INVITE_MODAL_CLOSE',
+});
+

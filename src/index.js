@@ -6,11 +6,13 @@ import { createHashHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 import { LayoutSelector } from './containers-redux/LayoutSelector';
 import { fetchExistingChannels } from './actions/channels/fetchExistingChannels'
+import { fetchExistingUsers } from './actions/users/fetchExistingUsers'
 
 const history = createHashHistory();
 const store = createStore(history);
 
 fetchExistingChannels(store);
+fetchExistingUsers(store);
 
 render(
     <Provider store={store}>
