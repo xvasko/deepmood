@@ -24,19 +24,41 @@ export class InviteUsersModal extends React.Component {
         this.setState({term: e.target.value}, this.updateSearchedUsers)
     }
 
+    decorateUsers(users) {
+        var channelUsers = this.getChannelUsers();
+        return users.map(user => {
+            if(channelUsers.includes(user)) {
+                return <li>{user} <i>(already in channel)</i></li>
+            } else {
+                return <li>{user} <a href='#' onClick={(e) => this.inviteUser(e, user)}>invite</a></li>
+            }
+        })
+    }
+
+    getChannelUsers() {
+        return this.props.channel ? JSON.parse(this.props.channel.customData).users : ''
+    }
+
+    inviteUser(e, user) {
+        e.preventDefault()
+        var users = this.getChannelUsers()
+        users.push(user)
+        this.props.onUserInvite(this.props.activeChannel, JSON.stringify(users))
+    }
+
     render() {
-        var displayedUsers = this.state.searchedUsers ? this.state.searchedUsers.map(user => <li>{user}</li>) : this.state.users.map(user => <li>{user}</li>)
+        var searchedUsers = this.state.searchedUsers ?
+            this.decorateUsers(this.state.searchedUsers) :
+            this.decorateUsers(this.state.users)
         return (
             <ReactModal
                 isOpen={this.props.isOpen}
                 shouldCloseOnOverlayClick={true}
             >
-                {this.props.channelName} <br/>
-                {this.props.channelId} <br/>
                 <h2>Search users</h2>
                 <input type="text" value={this.state.term} onChange={(e) => this.handleChange(e)} placeholder='search user'/>
                 <ul>
-                    {displayedUsers}
+                    {searchedUsers}
                 </ul>
                 <button onClick={() => this.props.onCloseInviteUsersModal()}>Close Modal</button>
                 <button onClick={() =>console.log(this.state)}>getState</button>

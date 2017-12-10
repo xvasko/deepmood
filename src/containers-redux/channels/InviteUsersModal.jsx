@@ -1,18 +1,22 @@
 import { connect } from 'react-redux';
 import { InviteUsersModal } from '../../components/channels/InviteUsersModal'
 import { closeInviteUsersModal } from '../../actions/channels/actionCreators'
+import { updateChannel } from '../../actions/channels/updateChannel'
 
 const mapStateToProps = (state) => {
     return {
         isOpen: state.channels.isInviteModalOpen,
-        channelId: state.channels.activeChannel,
-        channelName: state.channels.activeChannel ? state.channels.byId.get(state.channels.activeChannel).name : "no active channel",
-        users: state.users.byId.values()
+        channel: state.channels.activeChannel ? state.channels.byId.get(state.channels.activeChannel) : null,
+        users: state.users.byId.values(),
+        activeChannel: state.channels.activeChannel
     }};
 
 const mapDispatchToProps = (dispatch) => ({
     onCloseInviteUsersModal: () => {
         dispatch(closeInviteUsersModal());
+    },
+    onUserInvite: (channelId, customData) => {
+        dispatch(updateChannel(channelId, customData))
     }
 });
 

@@ -16,7 +16,7 @@ export const authenticateUser = () =>
             getHeader()
             )
             .then(token => {
-                postponeFor(500).then(() => {
+                postponeFor(0).then(() => {
                     dispatch(receiveValidToken(token));
                     dispatch(push('/'));
                     dispatch(fetchProfileDetails('user@gmail.com'));
