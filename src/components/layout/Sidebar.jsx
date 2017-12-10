@@ -21,12 +21,19 @@ class Sidebar extends React.Component {
         this.props.onOpenProfile();
     }
 
+    onOpenBrowse(e) {
+        e.preventDefault();
+        this.props.onOpenBrowse();
+    }
+
     render() {
         let channels = this.props.channels.map(channel => <SidebarItem key={channel.id} channelId={channel.id} channelName={channel.name}/>)
         return (
             <div style={style}>
                 Logged as <a href={'#'} onClick={(e) => this.onOpenProfile(e)}>{getCurrentUser()}</a><br/>
                 <LogoutButton /> <CreateChannelButton />
+                <br/>
+                <a href='#' onClick={(e) => this.onOpenBrowse(e)}>browse channels</a>
                 <br/>
                 <Loader stateLoadingSelector={state => state.channels.isFetchingChannels}>
                     <ul style={{minHeight: '250px'}}>

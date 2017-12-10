@@ -19,3 +19,11 @@ export const closeInviteUsersModal = () => ({
     type: 'INVITE_MODAL_CLOSE',
 });
 
+export const openBrowseChannelsModal = () => ({
+    type: 'BROWSE_MODAL_OPEN',
+});
+
+export const closeBrowseChannelsModal = () => ({
+    type: 'BROWSE_MODAL_CLOSE',
+});
+
