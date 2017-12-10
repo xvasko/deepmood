@@ -26,12 +26,3 @@ export const updateChannel = (id, newUsers) =>
                 console.log(error)
             );
     }
-//
-//[
-//    {
-//        "value": {},
-//        "path": "string",
-//        "op": "string",
-//        "from": "string"
-//    }
-//]

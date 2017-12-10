@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { getAuthorizedHeader } from '../../utils/api/headers';
-import { updateProfileDetails } from '../profile/updateProfileDetails'
-import { profileDetails } from '../../reducers/profile/profileDetails'
+import { createProfileChannels } from '../profile/updateProfileChannels'
 
 export const createChannel = (name) =>
     (dispatch, getState) => {
@@ -16,18 +15,7 @@ export const createChannel = (name) =>
                     .filter(channel => !getState().channels.allIds.includes(channel.id))
                     .map(channel => {
                         dispatch({type: 'CHANNELS_CREATE_CHANNEL', payload: channel});
-                        dispatch({type: 'PROFILE_ADD_CHANNEL', payload: channel.id})
-
-                        var newChannels = profileDetails.channels.toArray()
-                        newChannels.push(channel.id)
-                        console.log(channel.id);
-
-                        dispatch(updateProfileDetails(profileDetails.email, {
-                            name: profileDetails.name,
-                            phone: profileDetails.phone,
-                            avatarId: profileDetails.avatarId,
-                            channels: newChannels
-                        }))
+                        dispatch(createProfileChannels(getState().profile.profileDetails.email))
                     })
             )
             .catch((error) =>

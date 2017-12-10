@@ -1,11 +1,14 @@
 import { connect } from 'react-redux';
 import { Header } from '../../components/layout/Header';
 import { closeInviteUsersModal, openInviteUsersModal } from '../../actions/channels/actionCreators'
+import { updateChannel } from '../../actions/channels/updateChannel'
 
 const mapStateToProps = (state) => {
     if(state.channels.activeChannel) {
         return {
-            channelName: state.channels.byId.get(state.channels.activeChannel).name,
+            userEmail: state.profile.profileDetails.email,
+            channel: state.channels.activeChannel ? state.channels.byId.get(state.channels.activeChannel) : null,
+            channelName: state.channels.activeChannel ? state.channels.byId.get(state.channels.activeChannel).name : null,
             channelId: state.channels.activeChannel
         }
     } else {
@@ -15,6 +18,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     onOpenInviteUsersModal: () => {
         dispatch(openInviteUsersModal());
+    },
+    onLeaveChannel: (channelId, newUsers) => {
+        dispatch(updateChannel(channelId, newUsers));
     }
 });
 

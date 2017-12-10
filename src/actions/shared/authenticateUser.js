@@ -6,6 +6,7 @@ import { getHeader } from '../../utils/api/headers'
 import { postponeFor } from '../../utils/utils'
 import { fetchProfileDetails } from '../profile/fetchProfileDetails'
 import { fetchExistingUsers } from '../users/fetchExistingUsers'
+import { createProfileChannels } from '../profile/updateProfileChannels'
 
 export const authenticateUser = () =>
     (dispatch, getState) => {
@@ -20,7 +21,8 @@ export const authenticateUser = () =>
                     dispatch(receiveValidToken(token));
                     dispatch(push('/'));
                     dispatch(fetchProfileDetails('user@gmail.com'));
-                    dispatch(fetchExistingUsers())
+                    dispatch(fetchExistingUsers());
+                    dispatch(createProfileChannels('user@gmail.com'))
                 })
 
                 localStorage.setItem('sharedAuthenticationToken', JSON.stringify(token));

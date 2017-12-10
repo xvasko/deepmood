@@ -16,11 +16,28 @@ export class Header extends React.Component {
         this.props.onOpenInviteUsersModal();
     }
 
+    handleLeave(e) {
+        e.preventDefault();
+        var customData = this.getChannelCustomData()
+        console.log(this.getChannelCustomData())
+        if (this.props.userEmail === customData.owner) {
+            alert('Can\'t leave channel. You are the owner.');
+            return;
+        } else {
+            this.props.onLeaveChannel(this.props.channelId, JSON.stringify(customData.users.filter(usr => usr !== this.props.userEmail)))
+        }
+    }
+
+    getChannelCustomData() {
+        return this.props.channel ? JSON.parse(this.props.channel.customData) : ''
+    }
+
     render() {
         var channelName = this.props.channelName ?
             <div>
-                <strong>#{this.props.channelName}</strong>
+                <strong>#{this.props.channelName} </strong>
                 <a href='#' onClick={(e) => this.handleInvite(e)}>Invite users</a>
+                <a href='#' onClick={(e) => this.handleLeave(e)}>Leave channel</a>
             </div>
             : "no active channel"
 

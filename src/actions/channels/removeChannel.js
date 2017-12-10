@@ -1,5 +1,7 @@
 import { getAuthorizedHeader } from '../../utils/api/headers'
 import axios from 'axios';
+import { removeProfileChannels } from '../profile/updateProfileChannels'
+import { changeActiveChannel } from './actionCreators'
 
 export const removeChannel = (id) =>
     (dispatch, getState) => {
@@ -8,8 +10,11 @@ export const removeChannel = (id) =>
             getAuthorizedHeader(getState().authentication.token.data)
         )
             .then((result) => {
+                if (getState().channels.activeChannel === id) {
+                    dispatch(changeActiveChannel(null));
+                }
                 dispatch({type: 'CHANNELS_REMOVE_CHANNEL', payload: id})
-                dispatch({type: 'PROFILE_DELETE_CHANNEL', payload: id})
+                dispatch(removeProfileChannels(id))
             })
             .catch((error) =>
                 console.log(error)
