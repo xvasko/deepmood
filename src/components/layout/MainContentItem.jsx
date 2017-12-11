@@ -10,8 +10,18 @@ export class MainContentItem extends React.Component {
         super(props);
         this.state = {
             isEditing: false,
-            editingMessage: this.props.value
+            editingMessage: this.props.value,
+            displayedName: this.props.createdBy
         };
+    }
+
+    componentWillMount() {
+        this.props.users.forEach(usr => {
+            if (usr.email === this.props.createdBy) {
+                console.log(JSON.parse(usr.customData).name)
+                this.setState({displayedName: JSON.parse(usr.customData).name})
+            }
+        })
     }
 
     onRemoveMessage() {
@@ -39,9 +49,13 @@ export class MainContentItem extends React.Component {
         this.setState({editingMessage: e.target.value});
     }
 
+    forceUpdate() {
+
+    }
+
     render() {
         let buttons = null;
-        if (getCurrentUser() == this.props.createdBy) {
+        if (getCurrentUser() === this.props.createdBy) {
             buttons =
                 <span>
                     <button onClick={() => this.onEditClick()}     style={{float: 'right'}}>edit</button>
@@ -65,8 +79,9 @@ export class MainContentItem extends React.Component {
             <StyledListItem>
                 <div>
                     <strong>
-                        {getCleanUsername(this.props.createdBy)}:
+                        {this.state.displayedName}
                     </strong>
+                    ({this.props.createdBy})<b>:</b>
                     <i>
                         {getCleanTimeStamp(this.props.createdAt)}
                     </i>

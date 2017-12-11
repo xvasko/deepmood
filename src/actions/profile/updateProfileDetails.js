@@ -1,5 +1,6 @@
 import axios from 'axios/index'
 import { getAuthorizedHeader } from '../../utils/api/headers'
+import { fetchExistingUsers } from '../users/fetchExistingUsers'
 
 export const updateProfileDetails = (email, customData) =>
     (dispatch, getState) => {
@@ -9,6 +10,7 @@ export const updateProfileDetails = (email, customData) =>
         )
             .then((result) => {
                 dispatch({type: 'PROFILE_DETAILS_FETCH', payload: result.data});
+                dispatch(fetchExistingUsers())
             })
             .catch((error) =>
                 console.log(error)
