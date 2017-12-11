@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     onRemove: (channelId, messageId) => dispatch(removeMessage(channelId, messageId)),
-    onUpdate: (channelId, messageId, editedMessage) => dispatch(updateMessage(channelId, messageId, editedMessage))
+    onUpdate: (channelId, messageId, editedMessage, customData) => dispatch(updateMessage(channelId, messageId, editedMessage, customData))
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);

@@ -13,16 +13,16 @@ export const authenticateUser = () =>
         dispatch(startAuthentication());
 
         axios.post(API_AUTH_URI,
-            JSON.stringify('homo@habilis.com'),
+            JSON.stringify('user@gmail.com'),
             getHeader()
             )
             .then(token => {
                 postponeFor(0).then(() => {
                     dispatch(receiveValidToken(token));
                     dispatch(push('/'));
-                    dispatch(fetchProfileDetails('homo@habilis.com'));
+                    dispatch(fetchProfileDetails('user@gmail.com'));
                     dispatch(fetchExistingUsers());
-                    dispatch(createProfileChannels('homo@habilis.com'))
+                    dispatch(createProfileChannels('user@gmail.com'))
                 })
 
                 localStorage.setItem('sharedAuthenticationToken', JSON.stringify(token));

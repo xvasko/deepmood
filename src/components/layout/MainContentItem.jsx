@@ -35,7 +35,7 @@ export class MainContentItem extends React.Component {
     }
 
     onUpdateClick(e) {
-        this.props.onUpdate(this.props.activeChannelId, this.props.messageId, this.state.editingMessage);
+        this.props.onUpdate(this.props.activeChannelId, this.props.messageId, this.state.editingMessage, this.props.customData);
         this.setState({isEditing: false})
         e.preventDefault()
     }
@@ -49,18 +49,36 @@ export class MainContentItem extends React.Component {
         this.setState({editingMessage: e.target.value});
     }
 
-    forceUpdate() {
+    onUpVote() {
+        let newCustomData = JSON.parse(this.props.customData)
+        newCustomData.upVotes.push(this.props.currentUserEmail)
+        newCustomData.downVotes = newCustomData.downVotes.filter(email => email !== this.props.currentUserEmail)
+        this.props.onUpdate(this.props.activeChannelId, this.props.messageId, this.props.value, JSON.stringify(newCustomData))
+    }
 
+    onDownVote() {
+        let newCustomData = JSON.parse(this.props.customData)
+        newCustomData.upVotes = newCustomData.upVotes.filter(email => email !== this.props.currentUserEmail)
+        newCustomData.downVotes.push(this.props.currentUserEmail)
+        this.props.onUpdate(this.props.activeChannelId, this.props.messageId, this.props.value, JSON.stringify(newCustomData))
     }
 
     render() {
         let buttons = null;
+        let voteButtons =
+            <span>
+                <button onClick={() => this.onUpVote()}   disabled={JSON.parse(this.props.customData).upVotes.includes(this.props.currentUserEmail)}   style={{float: 'right'}}>+</button>
+                <button onClick={() => this.onDownVote()} disabled={JSON.parse(this.props.customData).downVotes.includes(this.props.currentUserEmail)} style={{float: 'right'}}>-</button>
+            </span>
         if (getCurrentUser() === this.props.createdBy) {
             buttons =
                 <span>
+                    {voteButtons}
                     <button onClick={() => this.onEditClick()}     style={{float: 'right'}}>edit</button>
                     <button onClick={() => this.onRemoveMessage()} style={{float: 'right'}}>remove</button>
                 </span>
+        } else {
+            buttons = voteButtons
         }
 
         let message;
@@ -89,6 +107,8 @@ export class MainContentItem extends React.Component {
                 </div>
                 <div>
                     {message}
+                    <br/>
+                    {this.props.customData}
                 </div>
             </StyledListItem>
         );
