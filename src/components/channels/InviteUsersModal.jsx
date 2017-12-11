@@ -61,7 +61,6 @@ export class InviteUsersModal extends React.Component {
                     {searchedUsers}
                 </ul>
                 <button onClick={() => this.props.onCloseInviteUsersModal()}>Close Modal</button>
-                <button onClick={() =>console.log(this.state)}>getState</button>
             </ReactModal>
         );
     }

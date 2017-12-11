@@ -10,9 +10,7 @@ export const profileChannels = (state =  Immutable.List(), action) => {
             })
             break;
         case 'PROFILE_CHANNELS_REMOVE':
-            console.log('sem som sa dostal')
             if (state.includes(action.payload.id)) {
-                console.log('neviem ci aj sem')
                 state = state.filter(id => id !== action.payload.id)
             }
             break;

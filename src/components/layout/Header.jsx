@@ -19,7 +19,6 @@ export class Header extends React.Component {
     handleLeave(e) {
         e.preventDefault();
         var customData = this.getChannelCustomData()
-        console.log(this.getChannelCustomData())
         if (this.props.userEmail === customData.owner) {
             alert('Can\'t leave channel. You are the owner.');
             return;

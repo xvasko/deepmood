@@ -18,7 +18,6 @@ export class MainContentItem extends React.Component {
     componentWillMount() {
         this.props.users.forEach(usr => {
             if (usr.email === this.props.createdBy) {
-                console.log(JSON.parse(usr.customData).name)
                 this.setState({displayedName: JSON.parse(usr.customData).name})
             }
         })
