@@ -28,6 +28,7 @@ export class Avatar extends React.Component {
                 <AvatarImage
                     alt='Profile picture'
                     src={this.props.uri}
+                    height={this.props.height}
                 />
                 <input id="file" type="file" onChange={() => this.toggleUploadButton()} />
                 <br/>

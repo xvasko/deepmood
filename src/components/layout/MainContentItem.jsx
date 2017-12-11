@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { getCleanUsername } from '../../utils/layout/getCleanUsername'
 import { getCleanTimeStamp } from '../../utils/layout/getCleanTimeStamp'
 import { StyledListItem } from './MainContentItem.styles'
 import { getCurrentUser } from '../../utils/getCurrentUser'
+import { AvatarMessage } from '../profile/Avatar.styles'
 
 export class MainContentItem extends React.Component {
     constructor(props) {
@@ -101,20 +101,26 @@ export class MainContentItem extends React.Component {
         }
         return (
             <StyledListItem>
-                <div>
-                    <strong>
-                        {this.state.displayedName}
-                    </strong>
-                    ({this.props.createdBy})<b>:</b>
-                    <i>
-                        {getCleanTimeStamp(this.props.createdAt)}
-                    </i>
-                    {buttons}
-                </div>
-                <div>
-                    {message}
-                    <br/>
-                    {thumbs}
+                <div style={{minHeight: '70px'}}>
+                    <AvatarMessage
+                        alt='Profile picture'
+                        src={this.props.uri}
+                    />
+                    <div>
+                        <strong>
+                            {this.state.displayedName}
+                        </strong>
+                        ({this.props.createdBy})<b>:</b>
+                        <i>
+                            {getCleanTimeStamp(this.props.createdAt)}
+                        </i>
+                        {buttons}
+                    </div>
+                    <div>
+                        {message}
+                        <br/>
+                        {thumbs}
+                    </div>
                 </div>
             </StyledListItem>
         );

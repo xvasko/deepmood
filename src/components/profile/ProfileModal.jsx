@@ -13,7 +13,7 @@ export class ProfileModal extends React.Component {
                 isOpen={this.props.isOpen}
                 shouldCloseOnOverlayClick={true}
             >
-                <Avatar/>
+                <Avatar height={'197px'}/>
 
                 <ProfileForm />
 
