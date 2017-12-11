@@ -66,6 +66,10 @@ export class MainContentItem extends React.Component {
         return JSON.parse(this.props.customData);
     }
 
+    getAvatarUri() {
+        return this.props.usersById.get(this.props.createdBy).avatarUri
+    }
+
     render() {
         let buttons = null;
         let voteButtons =
@@ -103,7 +107,7 @@ export class MainContentItem extends React.Component {
                 <div style={{minHeight: '70px'}}>
                     <AvatarMessage
                         alt='Profile picture'
-                        src={this.props.uri}
+                        src={this.getAvatarUri()}
                     />
                     <div>
                         <strong>

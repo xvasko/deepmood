@@ -10,22 +10,18 @@ export const fetchExistingUsers = () =>
         .then(result => {
             result.data.map(user => {
                 if (user.email !== '') {
-                    fetchAvatar(JSON.parse(user.customData).avatarId)
-                    dispatch({type: 'USERS_CREATE_USER', payload: { user: user, avatarUri: 'lol' }})
+                    let payload = { user: user, avatarUri: null }
+                    dispatch({type: 'USERS_CREATE_USER', payload: payload })
+                    let avatarId = JSON.parse(user.customData).avatarId
+                    if (avatarId !== 'null') {
+                        axios.get(`https://pv247messaging.azurewebsites.net/api/file/${avatarId}/download-link`,
+                            getAuthorizedHeader(getState().authentication.token.data))
+                            .then(response =>  dispatch({type: 'USERS_CREATE_USER', payload: {...payload, avatarUri: response.data} }))
+                    }
                 }
             })
         })
         .catch((error) =>
             console.log(error)
         );
-    }
-
-
-const fetchAvatar = (avatarId) =>
-    (getState) => {
-        if (avatarId) {
-            axios.get(`https://pv247messaging.azurewebsites.net/api/file/${avatarId}/download-link`,
-                getAuthorizedHeader(getState().authentication.token.data))
-                .then(response => console.log(response.data))
-        }
     }

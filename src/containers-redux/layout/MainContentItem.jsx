@@ -6,6 +6,7 @@ import { updateMessage } from '../../actions/messages/updateMessage'
 const mapStateToProps = (state) => ({
     activeChannelId: state.channels.activeChannel,
     users: state.users.allIds.map(usr => state.users.byId.get(usr)),
+    usersById: state.users.byId,
     currentUserEmail: state.profile.profileDetails.email
 });
 

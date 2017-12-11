@@ -13,16 +13,16 @@ export const authenticateUser = () =>
         dispatch(startAuthentication());
 
         axios.post(API_AUTH_URI,
-            JSON.stringify('user@gmail.com'),
+            JSON.stringify('deepmood@gmail.com'),
             getHeader()
             )
             .then(token => {
                 postponeFor(0).then(() => {
                     dispatch(receiveValidToken(token));
                     dispatch(push('/'));
-                    dispatch(fetchProfileDetails('user@gmail.com'));
+                    dispatch(fetchProfileDetails('deepmood@gmail.com'));
                     dispatch(fetchExistingUsers());
-                    dispatch(createProfileChannels('user@gmail.com'))
+                    dispatch(createProfileChannels('deepmood@gmail.com'))
                 })
 
                 localStorage.setItem('sharedAuthenticationToken', JSON.stringify(token));
