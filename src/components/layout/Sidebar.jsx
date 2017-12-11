@@ -27,6 +27,7 @@ class Sidebar extends React.Component {
     }
 
     render() {
+        console.log(this.props.channels)
         let channels = this.props.channels.map(channel => <SidebarItem key={channel.id} channelId={channel.id} channelName={channel.name}/>)
         return (
             <div style={style}>

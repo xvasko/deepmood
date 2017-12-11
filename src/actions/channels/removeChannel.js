@@ -13,8 +13,8 @@ export const removeChannel = (id) =>
                 if (getState().channels.activeChannel === id) {
                     dispatch(changeActiveChannel(null));
                 }
-                dispatch({type: 'CHANNELS_REMOVE_CHANNEL', payload: id})
                 dispatch(removeProfileChannels(id))
+                dispatch({type: 'CHANNELS_REMOVE_CHANNEL', payload: id})
             })
             .catch((error) =>
                 console.log(error)

@@ -63,6 +63,10 @@ export class MainContentItem extends React.Component {
         this.props.onUpdate(this.props.activeChannelId, this.props.messageId, this.props.value, JSON.stringify(newCustomData))
     }
 
+    getCustomData() {
+        return JSON.parse(this.props.customData);
+    }
+
     render() {
         let buttons = null;
         let voteButtons =
@@ -80,7 +84,6 @@ export class MainContentItem extends React.Component {
         } else {
             buttons = voteButtons
         }
-
         let message;
         if (this.state.isEditing) {
             message =
@@ -92,7 +95,10 @@ export class MainContentItem extends React.Component {
         } else {
             message = this.props.value;
         }
-
+        let thumbs = null;
+        if (this.getCustomData().upVotes.length > 0 || this.getCustomData().downVotes.length > 0) {
+            thumbs = <span>&#128077; {this.getCustomData().upVotes.length} &#128078; {this.getCustomData().downVotes.length}</span>
+        }
         return (
             <StyledListItem>
                 <div>
@@ -108,7 +114,7 @@ export class MainContentItem extends React.Component {
                 <div>
                     {message}
                     <br/>
-                    {this.props.customData}
+                    {thumbs}
                 </div>
             </StyledListItem>
         );
