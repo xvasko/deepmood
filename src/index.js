@@ -5,13 +5,12 @@ import { createStore } from './utils/createStore';
 import { createHashHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 import { LayoutSelector } from './containers-redux/LayoutSelector';
-import { fetchExistingChannels } from './actions/channels/fetchExistingChannels'
-import { fetchExistingUsers } from './actions/users/fetchExistingUsers'
+import { initialDataFetch } from './actions/shared/initialDataFetch'
 
 const history = createHashHistory();
 const store = createStore(history);
 
-fetchExistingChannels(store);
+initialDataFetch(store);
 
 render(
     <Provider store={store}>
