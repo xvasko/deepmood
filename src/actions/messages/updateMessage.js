@@ -1,5 +1,6 @@
 import { getAuthorizedHeader } from '../../utils/api/headers'
 import axios from 'axios';
+import { updateMessageAction } from './actionCreators'
 
 export const updateMessage = (channelId, messageId, editedMessage, customData) =>
     (dispatch, getState) => {
@@ -7,7 +8,7 @@ export const updateMessage = (channelId, messageId, editedMessage, customData) =
             JSON.stringify({'value': `${editedMessage}`, 'customData': customData}),
             getAuthorizedHeader(getState().authentication.token.data)
         )
-            .then(() => dispatch({type: 'MESSAGES_UPDATE_MESSAGE', payload: {channelId: channelId, messageId: messageId, editedMessage: editedMessage, customData: customData}}))
+            .then(() => dispatch(updateMessageAction(channelId, messageId, editedMessage, customData)))
             .catch((error) =>
                 console.log(error)
             );

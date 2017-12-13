@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getAuthorizedHeader } from '../../utils/api/headers';
+import { createMessageAction } from './actionCreators'
 
 export const createMessage = (channelId, message) =>
     (dispatch, getState) => {
@@ -7,10 +8,10 @@ export const createMessage = (channelId, message) =>
             JSON.stringify({'value': `${message}`, 'customData': '{"upVotes": [], "downVotes": []}'}),
             getAuthorizedHeader(getState().authentication.token.data)
         )
-            .then((result) =>
-                dispatch({type: 'MESSAGES_CREATE_MESSAGE', payload: {channelId: channelId, data: result.data}})
-            )
-            .catch((error) =>
-                console.log(error)
-            );
+        .then((result) =>
+            dispatch(createMessageAction(channelId, result.data))
+        )
+        .catch((error) =>
+            console.log(error)
+        );
     }

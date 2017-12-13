@@ -9,14 +9,14 @@ export const removeChannel = (id) =>
             JSON.stringify([{"path": `/channels/${id}`,"op":"remove"}]),
             getAuthorizedHeader(getState().authentication.token.data)
         )
-            .then((result) => {
-                if (getState().channels.activeChannel === id) {
-                    dispatch(changeActiveChannel(null));
-                }
-                dispatch(removeProfileChannels(id))
-                dispatch(removeChannelAction(id))
-            })
-            .catch((error) =>
-                console.log(error)
-            );
+        .then((result) => {
+            if (getState().channels.activeChannel === id) {
+                dispatch(changeActiveChannel(null));
+            }
+            dispatch(removeProfileChannels(id))
+            dispatch(removeChannelAction(id))
+        })
+        .catch((error) =>
+            console.log(error)
+        );
     }

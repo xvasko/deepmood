@@ -20,17 +20,17 @@ export const updateChannel = (id, newUsers) =>
                 ]),
             getAuthorizedHeader(getState().authentication.token.data)
         )
-            .then((result) => {
-                let addUser = JSON.parse(newUsers).length > JSON.parse(getState().channels.byId.get(id).customData).users.length
-                let removeUser = JSON.parse(newUsers).length < JSON.parse(getState().channels.byId.get(id).customData).users.length
-                dispatch(updateChannelAction(id, newCustomData));
-                if(addUser) {
-                    dispatch(createProfileChannels(getState().profile.profileDetails.email))
-                } else if (removeUser) {
-                    dispatch(removeProfileChannels(id))
-                }
-            })
-            .catch((error) =>
-                console.log(error)
-            );
+        .then((result) => {
+            let addUser = JSON.parse(newUsers).length > JSON.parse(getState().channels.byId.get(id).customData).users.length
+            let removeUser = JSON.parse(newUsers).length < JSON.parse(getState().channels.byId.get(id).customData).users.length
+            dispatch(updateChannelAction(id, newCustomData));
+            if(addUser) {
+                dispatch(createProfileChannels(getState().profile.profileDetails.email))
+            } else if (removeUser) {
+                dispatch(removeProfileChannels(id))
+            }
+        })
+        .catch((error) =>
+            console.log(error)
+        );
     }
