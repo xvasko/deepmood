@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { MessagesForm } from '../../containers-redux/messages/MessagesForm'
 import { MainContentItem } from '../../containers-redux/layout/MainContentItem'
+import { DeleteChannelLink } from '../../containers-redux/channels/DeleteChannelLink'
 
 var style = {
     margin: '0px 0px 0px 240px',
-    height: '50px',
+    height: '60px',
     background: 'white',
     borderBottom: '1px solid gray'
 };
@@ -32,11 +33,15 @@ export class Header extends React.Component {
     }
 
     render() {
+        var actionLink = this.getChannelCustomData().owner === this.props.userEmail
+            ? <DeleteChannelLink channelId={this.props.channelId} channelName={this.props.channelName} />
+            : <a href='#' onClick={(e) => this.handleLeave(e)}>Leave channel</a>
+
         var channelName = this.props.channelName ?
             <div>
-                <strong>#{this.props.channelName} </strong>
-                <a href='#' onClick={(e) => this.handleInvite(e)}>Invite users</a>
-                <a href='#' onClick={(e) => this.handleLeave(e)}>Leave channel</a>
+                <strong>#{this.props.channelName} </strong> <br/>
+                <a href='#' onClick={(e) => this.handleInvite(e)}>Invite users</a> <br/>
+                {actionLink} <br/>
             </div>
             : "no active channel"
 

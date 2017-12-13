@@ -28,9 +28,9 @@ export class InviteUsersModal extends React.Component {
         var channelUsers = this.getChannelUsers();
         return users.map(user => {
             if(channelUsers.includes(user)) {
-                return <li>{user} <i>(already in channel)</i></li>
+                return <li key={user.email + 'x'}>{user} <i>(already in channel)</i></li>
             } else {
-                return <li>{user} <a href='#' onClick={(e) => this.inviteUser(e, user)}>invite</a></li>
+                return <li key={user.email + 'x'}>{user} <a href='#' onClick={(e) => this.inviteUser(e, user)}>invite</a></li>
             }
         })
     }

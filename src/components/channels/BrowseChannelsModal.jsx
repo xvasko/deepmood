@@ -16,9 +16,9 @@ export class BrowseChannelsModal extends React.Component {
     decorateChannel(channel) {
         var userChannels = this.props.userChannels;
         if(userChannels.includes(channel.id)) {
-            return <li><b>{channel.name}</b> <i>(already in channel)</i></li>
+            return <li key={channel.id}><b>{channel.name}</b> <i>(already in channel)</i></li>
         } else {
-            return <li><b>{channel.name}</b> <a href='#' onClick={(e) =>this.joinChannel(e, channel)}>join channel</a></li>
+            return <li key={channel.id}><b>{channel.name}</b> <a href='#' onClick={(e) =>this.joinChannel(e, channel)}>join channel</a></li>
         }
     }
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { RemoveChannelButton } from '../../components/channels/RemoveChannelButton';
+import { DeleteChannelLink } from '../../components/channels/DeleteChannelLink';
 import { removeChannel } from '../../actions/channels/removeChannel';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -14,6 +14,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);
-const connectedComponent = enhancer(RemoveChannelButton);
+const connectedComponent = enhancer(DeleteChannelLink);
 
-export { connectedComponent as RemoveChannelButton };
+export { connectedComponent as DeleteChannelLink };

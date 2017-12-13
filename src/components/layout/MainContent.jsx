@@ -12,8 +12,9 @@ class MainContent extends React.Component {
         let messages = this.props.messages
             ? this.props.messages.map(message => <MainContentItem key={message.id} messageId={message.id} createdBy={message.createdBy} createdAt={message.createdAt} value={message.value} customData={message.customData}/>)
             : <li>no messages</li>
-        return (
-            <div style={style}>
+
+        let content = this.props.activeChannel
+            ? <div>
                 <div>
                     <ul>
                         {messages}
@@ -22,6 +23,14 @@ class MainContent extends React.Component {
                 <div>
                     <MessagesForm/>
                 </div>
+            </div>
+            : <div>
+                <h3>Browse channels and join them! Or you can create your own.</h3>
+            </div>
+
+        return (
+            <div style={style}>
+                {content}
             </div>
         )
     }

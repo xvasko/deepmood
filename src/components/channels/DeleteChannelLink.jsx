@@ -1,8 +1,9 @@
 import * as React from 'react';
 
-class RemoveChannelButton extends React.Component {
+class DeleteChannelLink extends React.Component {
 
-    onClick() {
+    onClick(e) {
+        e.preventDefault();
         if (window.confirm('Are you sure you want to remove ' + this.props.channelName + ' channel?')) {
             this.props.onClick(this.props.channelId);
         }
@@ -10,12 +11,12 @@ class RemoveChannelButton extends React.Component {
 
     render() {
         return(
-            <button onClick={() => this.onClick()}>
-                x
-            </button>
+            <a href='#' onClick={(e) => this.onClick(e)}>
+                delete channel
+            </a>
         )
     }
 
 }
 
-export { RemoveChannelButton };
+export { DeleteChannelLink };
