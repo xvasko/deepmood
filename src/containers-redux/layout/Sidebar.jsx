@@ -5,11 +5,8 @@ import { openBrowseChannelsModal } from '../../actions/channels/actionCreators'
 
 
 const mapStateToProps = (state) => {
-    if(state.channels.allIds.size > 0) {
-        return { channels: state.profile.profileChannels.map(id => state.channels.byId.get(id)).toList() }
-    } else {
-        return { channels: [] };
-    }};
+    return { channels: state.profile.profileChannels.map(id => state.channels.byId.get(id)).toList() }
+};
 
 const mapDispatchToProps = (dispatch) => ({
     onOpenProfile: () => {
