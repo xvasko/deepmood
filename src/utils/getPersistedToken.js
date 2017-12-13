@@ -26,3 +26,7 @@ export const getPersistedToken = () => {
 
     return persistedTokenJSON && JSON.parse(persistedTokenJSON);
 }
+
+export const getAuthUserEmail = () => {
+    return jwt_decode(localStorage.getItem('sharedAuthenticationToken')).sub;
+}

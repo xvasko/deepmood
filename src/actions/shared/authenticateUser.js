@@ -4,9 +4,7 @@ import { API_AUTH_URI } from '../../constants/api'
 import axios from 'axios';
 import { getHeader } from '../../utils/api/headers'
 import { postponeFor } from '../../utils/utils'
-import { fetchProfileDetails } from '../profile/fetchProfileDetails'
-import { fetchExistingUsers } from '../users/fetchExistingUsers'
-import { createProfileChannels } from '../profile/updateProfileChannels'
+import { fetchAuthData } from './fetchAuthData'
 
 export const authenticateUser = () =>
     (dispatch, getState) => {
@@ -20,9 +18,7 @@ export const authenticateUser = () =>
                 postponeFor(0).then(() => {
                     dispatch(receiveValidToken(token));
                     dispatch(push('/'));
-                    dispatch(fetchProfileDetails('deepmood@gmail.com'));
-                    dispatch(fetchExistingUsers());
-                    dispatch(createProfileChannels('deepmood@gmail.com'))
+                    dispatch(fetchAuthData('deepmood@gmail.com'));
                 })
 
                 localStorage.setItem('sharedAuthenticationToken', JSON.stringify(token));

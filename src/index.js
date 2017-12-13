@@ -12,7 +12,6 @@ const history = createHashHistory();
 const store = createStore(history);
 
 fetchExistingChannels(store);
-fetchExistingUsers(store);
 
 render(
     <Provider store={store}>
