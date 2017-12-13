@@ -1,4 +1,7 @@
-import { receiveValidToken, startAuthentication } from './actionCreators'
+import {
+    dismissError, failAuthentication, receiveValidToken, startAuthentication,
+    stopAuthentication
+} from './actionCreators'
 import { push } from 'connected-react-router'
 import { API_AUTH_URI } from '../../constants/api'
 import axios from 'axios';
@@ -15,7 +18,7 @@ export const authenticateUser = (email) =>
             getHeader()
             )
             .then(token => {
-                postponeFor(0).then(() => {
+                postponeFor(500).then(() => {
                     dispatch(receiveValidToken(token));
                     dispatch(push('/'));
                     dispatch(fetchAuthData(email));
@@ -24,6 +27,8 @@ export const authenticateUser = (email) =>
                 localStorage.setItem('sharedAuthenticationToken', JSON.stringify(token));
             })
             .catch(error => {
-                console.log(error);
+                dispatch(stopAuthentication())
+                const dispatchedAction = dispatch(failAuthentication('Sadly, authentication failed...', error));
+                setTimeout(() => dispatch(dismissError(dispatchedAction.payload.error.id)), 3500);
             });
     };
