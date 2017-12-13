@@ -8,8 +8,8 @@ export const updateMessage = (channelId, messageId, editedMessage, customData) =
             JSON.stringify({'value': `${editedMessage}`, 'customData': customData}),
             getAuthorizedHeader(getState().authentication.token.data)
         )
-            .then(() => dispatch(updateMessageAction(channelId, messageId, editedMessage, customData)))
-            .catch((error) =>
-                console.log(error)
-            );
+        .then(() => dispatch(updateMessageAction(channelId, messageId, editedMessage, customData)))
+        .catch((error) =>
+            console.log(error)
+        );
     }

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getAuthorizedHeader } from '../../utils/api/headers'
+import { fetchExistingUsersAction } from './actionCreators'
 
 
 export const fetchExistingUsers = () =>
@@ -16,7 +17,7 @@ export const fetchExistingUsers = () =>
                     if (avatarId !== 'null') {
                         axios.get(`https://pv247messaging.azurewebsites.net/api/file/${avatarId}/download-link`,
                             getAuthorizedHeader(getState().authentication.token.data))
-                            .then(response =>  dispatch({type: 'USERS_CREATE_USER', payload: {...payload, avatarUri: response.data} }))
+                            .then(response =>  dispatch(fetchExistingUsersAction({...payload, avatarUri: response.data})))
                     }
                 }
             })

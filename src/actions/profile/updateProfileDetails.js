@@ -1,6 +1,7 @@
 import axios from 'axios/index'
 import { getAuthorizedHeader } from '../../utils/api/headers'
 import { fetchExistingUsers } from '../users/fetchExistingUsers'
+import { fetchProfileDetailsAction } from './actionCreators'
 
 export const updateProfileDetails = (email, customData) =>
     (dispatch, getState) => {
@@ -9,7 +10,7 @@ export const updateProfileDetails = (email, customData) =>
             getAuthorizedHeader(getState().authentication.token.data)
         )
             .then((result) => {
-                dispatch({type: 'PROFILE_DETAILS_FETCH', payload: result.data});
+                dispatch(fetchProfileDetailsAction(result.data));
                 dispatch(fetchExistingUsers())
             })
             .catch((error) =>

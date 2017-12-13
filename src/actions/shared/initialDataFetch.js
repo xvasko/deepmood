@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { endChannelFetch, startChannelFetch } from '../channels/actionCreators'
+import { createChannelAction, endChannelFetch, startChannelFetch } from '../channels/actionCreators'
 import { postponeFor } from '../../utils/utils'
 import { fetchAuthData } from './fetchAuthData'
 import { getAuthUserEmail, getPersistedToken } from '../../utils/getPersistedToken'
@@ -14,7 +14,7 @@ export const initialDataFetch = (store) => {
 
                     result.data.channels
                         .filter(channel => !store.getState().channels.allIds.includes(channel.id))
-                        .map(channel => store.dispatch({type: 'CHANNELS_CREATE_CHANNEL', payload: channel}))
+                        .map(channel => store.dispatch(createChannelAction(channel)))
 
                     if(getPersistedToken()) {
                         store.dispatch(fetchAuthData(getAuthUserEmail()))
