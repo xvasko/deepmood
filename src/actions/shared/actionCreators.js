@@ -27,3 +27,4 @@ export const dismissError = (errorId) => ({
 });
 
 export const failAuthentication = errorActionFactory('SHARED_AUTHENTICATION_FAILED');
+export const failRegistration = errorActionFactory('SHARED_REGISTRATION_FAILED');

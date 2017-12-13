@@ -1,7 +1,7 @@
 import { getAuthorizedHeader } from '../../utils/api/headers'
 import axios from 'axios';
 import { removeProfileChannels } from '../profile/updateProfileChannels'
-import { changeActiveChannel } from './actionCreators'
+import { changeActiveChannel, removeChannelAction } from './actionCreators'
 
 export const removeChannel = (id) =>
     (dispatch, getState) => {
@@ -14,7 +14,7 @@ export const removeChannel = (id) =>
                     dispatch(changeActiveChannel(null));
                 }
                 dispatch(removeProfileChannels(id))
-                dispatch({type: 'CHANNELS_REMOVE_CHANNEL', payload: id})
+                dispatch(removeChannelAction(id))
             })
             .catch((error) =>
                 console.log(error)

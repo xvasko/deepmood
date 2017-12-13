@@ -22,25 +22,24 @@ export class RegisterForm extends React.Component {
         this.setState({phone: e.target.value})
     }
 
-    handleSubmit() {
+    handleSubmit(e) {
         this.props.onSubmit(this.state);
+        e.preventDefault()
     }
 
     render() {
         return (
-            <form style={{minHeight: '250px'}}>
+            <form onSubmit={(e) => this.handleSubmit(e)} style={{minHeight: '250px'}}>
                 <label>Username / Email</label>
-                <input type='email' onChange={(e) => this.handleEmailChange(e)}/><br/>
+                <input type='email' value={this.state.email} onChange={(e) => this.handleEmailChange(e)}/><br/>
                 <label>Name</label>
-                <input type='text' onChange={(e) => this.handleNameChange(e)}/><br/>
+                <input type='text' value={this.state.name} onChange={(e) => this.handleNameChange(e)}/><br/>
                 <label>Phone number</label>
-                <input type='number' onChange={(e) => this.handlePhoneChange(e)}/><br/>
-                <button
-                    type='button'
-                    onClick={() => this.handleSubmit()}
-                >
-                    Register
-                </button>
+                <input type='number' value={this.state.phone} onChange={(e) => this.handlePhoneChange(e)}/><br/>
+                <input
+                    type='submit'
+                    value='Register'
+                />
             </form>
         );
     }

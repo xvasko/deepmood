@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { getAuthorizedHeader } from '../../utils/api/headers';
 import { createProfileChannels } from '../profile/updateProfileChannels'
+import { createChannelAction } from './actionCreators'
 
 export const createChannel = (name) =>
     (dispatch, getState) => {
@@ -13,7 +14,7 @@ export const createChannel = (name) =>
                 result.data.channels
                     .filter(channel => !getState().channels.allIds.includes(channel.id))
                     .map(channel => {
-                        dispatch({type: 'CHANNELS_CREATE_CHANNEL', payload: channel});
+                        dispatch(createChannelAction(channel));
                         dispatch(createProfileChannels(getState().profile.profileDetails.email))
                     })
             )

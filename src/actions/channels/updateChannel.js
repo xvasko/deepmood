@@ -1,6 +1,7 @@
 import { getAuthorizedHeader } from '../../utils/api/headers'
 import axios from 'axios';
 import { createProfileChannels, removeProfileChannels } from '../profile/updateProfileChannels'
+import { updateChannelAction } from './actionCreators'
 
 export const updateChannel = (id, newUsers) =>
     (dispatch, getState) => {
@@ -22,17 +23,12 @@ export const updateChannel = (id, newUsers) =>
             .then((result) => {
                 let addUser = JSON.parse(newUsers).length > JSON.parse(getState().channels.byId.get(id).customData).users.length
                 let removeUser = JSON.parse(newUsers).length < JSON.parse(getState().channels.byId.get(id).customData).users.length
-
-                dispatch({type: 'CHANNELS_UPDATE_CHANNEL', payload: {channelId: id, newCustomData: newCustomData}});
-
-                // on user add
+                dispatch(updateChannelAction(id, newCustomData));
                 if(addUser) {
                     dispatch(createProfileChannels(getState().profile.profileDetails.email))
-                // on user remove
                 } else if (removeUser) {
                     dispatch(removeProfileChannels(id))
                 }
-                // on channel name change
             })
             .catch((error) =>
                 console.log(error)

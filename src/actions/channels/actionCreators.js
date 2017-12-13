@@ -27,3 +27,20 @@ export const closeBrowseChannelsModal = () => ({
     type: 'BROWSE_MODAL_CLOSE',
 });
 
+export const createChannelAction = (channel) => ({
+    type: 'CHANNELS_CREATE_CHANNEL',
+    payload: channel,
+})
+
+export const removeChannelAction = (channelId) => ({
+    type: 'CHANNELS_REMOVE_CHANNEL',
+    payload: channelId,
+})
+
+export const updateChannelAction = (channelId, newCustomData) => ({
+    type: 'CHANNELS_UPDATE_CHANNEL',
+    payload: {
+        channelId: channelId,
+        newCustomData: newCustomData
+    }
+})
