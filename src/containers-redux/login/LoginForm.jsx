@@ -3,8 +3,8 @@ import { LoginForm } from '../../components/login/LoginForm';
 import { authenticateUser } from '../../actions/shared/authenticateUser'
 
 const mapDispatchToProps = (dispatch) => ({
-    onSubmit: () => {
-        dispatch(authenticateUser());
+    onSubmit: (email) => {
+        dispatch(authenticateUser(email));
     }
 });
 

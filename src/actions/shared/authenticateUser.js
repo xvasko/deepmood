@@ -6,19 +6,19 @@ import { getHeader } from '../../utils/api/headers'
 import { postponeFor } from '../../utils/utils'
 import { fetchAuthData } from './fetchAuthData'
 
-export const authenticateUser = () =>
+export const authenticateUser = (email) =>
     (dispatch, getState) => {
         dispatch(startAuthentication());
 
         axios.post(API_AUTH_URI,
-            JSON.stringify('deepmood@gmail.com'),
+            JSON.stringify(email),
             getHeader()
             )
             .then(token => {
                 postponeFor(0).then(() => {
                     dispatch(receiveValidToken(token));
                     dispatch(push('/'));
-                    dispatch(fetchAuthData('deepmood@gmail.com'));
+                    dispatch(fetchAuthData(email));
                 })
 
                 localStorage.setItem('sharedAuthenticationToken', JSON.stringify(token));
