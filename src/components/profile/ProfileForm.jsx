@@ -42,16 +42,34 @@ export class ProfileForm extends React.Component {
     render() {
         return (
             <form style={{minHeight: '250px'}}>
-                <label>Username / Email</label>
-                <input value={this.props.email} disabled /><br/>
-                <label>Name</label>
-                <input type='text' value={this.state.newName} onChange={(e) => this.handleNameChange(e)}/><br/>
-                <label>Phone number</label>
-                <input type='number' value={this.state.newPhone} onChange={(e) => this.handlePhoneChange(e)}/><br/>
+                <div className="form-group">
+                    <label >Email</label>
+                    <input
+                        type="email"
+                        className="form-control"
+                        value={this.props.email} disabled /><br/>
+                    <label htmlFor="name">Name</label>
+                    <input
+                        type='text'
+                        id='name'
+                        className="form-control"
+                        value={this.state.newName}
+                        onChange={(e) => this.handleNameChange(e)}
+                    /><br/>
+                    <label htmlFor="phone">Phone number</label>
+                    <input
+                        type='number'
+                        id="phone"
+                        className="form-control"
+                        value={this.state.newPhone}
+                        onChange={(e) => this.handlePhoneChange(e)}
+                    /><br/>
+                </div>
                 <button
                     type='button'
                     onClick={() => this.handleSubmit()}
                     disabled={this.state.isUpdateDisabled}
+                    className="btn btn-primary"
                 >
                     Update
                 </button>

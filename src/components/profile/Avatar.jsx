@@ -32,7 +32,7 @@ export class Avatar extends React.Component {
                 />
                 <input id="file" type="file" onChange={() => this.toggleUploadButton()} />
                 <br/>
-                <button disabled={this.state.isUploadDisabled} onClick={() => this.onUpload()}>Upload</button>
+                <button className='btn btn-secondary btn-sm' disabled={this.state.isUploadDisabled} onClick={() => this.onUpload()}>Upload</button>
             </div>
         )
     }

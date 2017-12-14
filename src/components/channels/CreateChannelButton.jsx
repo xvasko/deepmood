@@ -4,7 +4,7 @@ import { StyledButton } from './CreateChannelButton.styles'
 class CreateChannelButton extends React.Component {
 
     onClick() {
-        var name = window.prompt('Channel name', '');
+        var name = window.prompt('Create a new channel!', '');
 
         if (name == null) {
             return;

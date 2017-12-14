@@ -33,7 +33,7 @@ export class BrowseChannelsModal extends React.Component {
                 <ul>
                     {channels}
                 </ul>
-                <button onClick={() => this.props.onCloseBrowseModal()}>Close Modal</button>
+                <button className='btn btn-secondary' onClick={() => this.props.onCloseBrowseModal()}>Close Modal</button>
             </ReactModal>
         );
     }
