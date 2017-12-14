@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyledMessagesForm } from './MessagesForm.styles'
 
 export class MessagesForm extends React.Component {
     constructor(props) {
@@ -23,14 +24,17 @@ export class MessagesForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <textarea
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                    placeholder='Enter your message'
-                />
-                <input type="submit" value="Submit" />
-            </form>
+            <StyledMessagesForm>
+                <form onSubmit={this.handleSubmit}>
+                    <input
+                        type='text'
+                        value={this.state.value}
+                        onChange={this.handleChange}
+                        placeholder='Enter your message...'
+                    />
+                    <input id='submitButton' type="submit" value="Submit" />
+                </form>
+            </StyledMessagesForm>
         );
     }
 }
