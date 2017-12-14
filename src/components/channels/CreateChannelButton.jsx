@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { StyledButton } from './CreateChannelButton.styles'
 
 class CreateChannelButton extends React.Component {
 
@@ -16,9 +17,9 @@ class CreateChannelButton extends React.Component {
 
     render() {
         return(
-            <button onClick={() => this.onClick()}>
-                Create new channel!
-            </button>
+            <StyledButton onClick={() => this.onClick()}>
+                +
+            </StyledButton>
         )
     }
 

@@ -4,6 +4,7 @@ import { CreateChannelButton } from '../../containers-redux/channels/CreateChann
 import { Loader } from '../../containers-redux/shared/Loader'
 import { SidebarItem } from '../../containers-redux/layout/SidebarItem'
 import { getCurrentUser } from '../../utils/getCurrentUser'
+import { StyledSidebar } from './Sidebar.styles'
 
 var style = {
     position: 'fixed',
@@ -29,18 +30,22 @@ class Sidebar extends React.Component {
     render() {
         let channels = this.props.channels.size > 0 ? this.props.channels.map(channel => <SidebarItem key={channel.id} channelId={channel.id} channelName={channel.name}/>) : <li>you have no channels</li>
         return (
-            <div style={style}>
-                Logged as <a href={'#'} onClick={(e) => this.onOpenProfile(e)}>{getCurrentUser()}</a><br/>
-                <LogoutButton /> <CreateChannelButton />
-                <br/>
-                <a href='#' onClick={(e) => this.onOpenBrowse(e)}>browse channels</a>
-                <br/>
+            <StyledSidebar>
+                <div style={{padding: '10px 20px'}}>
+                    <span>
+                    Logged as <a href={'#'} onClick={(e) => this.onOpenProfile(e)}>{getCurrentUser()}</a><br/>
+                        <LogoutButton />
+                    </span>
+                    <br/>
+                    <br/>
+                    <a href='#' onClick={(e) => this.onOpenBrowse(e)}>Channels</a> <CreateChannelButton />
+                </div>
                 <Loader stateLoadingSelector={state => state.channels.isFetchingChannels}>
                     <ul style={{minHeight: '250px'}}>
                         {channels}
                     </ul>
                 </Loader>
-            </div>
+            </StyledSidebar>
         )
     }
 }
