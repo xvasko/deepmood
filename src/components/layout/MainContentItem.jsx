@@ -74,15 +74,15 @@ export class MainContentItem extends React.Component {
         let buttons = null;
         let voteButtons =
             <span>
-                <button onClick={() => this.onUpVote()}   disabled={JSON.parse(this.props.customData).upVotes.includes(this.props.currentUserEmail)}   style={{float: 'right'}}>+</button>
-                <button onClick={() => this.onDownVote()} disabled={JSON.parse(this.props.customData).downVotes.includes(this.props.currentUserEmail)} style={{float: 'right'}}>-</button>
+                <button className="btn btn-success btn-sm" onClick={() => this.onUpVote()}   disabled={JSON.parse(this.props.customData).upVotes.includes(this.props.currentUserEmail)}   style={{float: 'right'}}>+</button>{' '}
+                <button className="btn btn-danger  btn-sm" onClick={() => this.onDownVote()} disabled={JSON.parse(this.props.customData).downVotes.includes(this.props.currentUserEmail)} style={{float: 'right'}}>-</button>
             </span>
         if (getCurrentUser() === this.props.createdBy) {
             buttons =
                 <span>
                     {voteButtons}
-                    <button onClick={() => this.onEditClick()}     style={{float: 'right'}}>edit</button>
-                    <button onClick={() => this.onRemoveMessage()} style={{float: 'right'}}>remove</button>
+                    <button className='btn btn-secondary btn-sm separator' onClick={() => this.onEditClick()}     style={{float: 'right'}}>edit</button>
+                    <button className='btn btn-secondary btn-sm' onClick={() => this.onRemoveMessage()} style={{float: 'right'}}>remove</button>
                 </span>
         } else {
             buttons = voteButtons
@@ -92,8 +92,8 @@ export class MainContentItem extends React.Component {
             message =
                 <div>
                     <textarea value={this.state.editingMessage} onChange={(e) => this.handleChange(e)} />
-                    <a href={'#'} onClick={(e) => this.onUpdateClick(e)}>UPDATE</a>
-                    <a href={'#'} onClick={(e) => this.onCancelClick(e)}>CANCEL</a>
+                    <a href={'#'} className='update' onClick={(e) => this.onUpdateClick(e)}>UPDATE</a>
+                    <a href={'#'} className='cancel' onClick={(e) => this.onCancelClick(e)}>CANCEL</a>
                 </div>
         } else {
             message = this.props.value;

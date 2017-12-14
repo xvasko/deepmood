@@ -5,7 +5,10 @@ export const StyledHeader = styled.div`
     margin: 0px 0px 0px 240px;
     height: 60px;
     background: white;
-    borderBottom: 1px solid gray;
+    border-bottom: 1px solid gray;
+    position: fixed;
+    top: 0;
+    width: 100%;
     
     a {
         outline: 0;

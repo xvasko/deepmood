@@ -12,7 +12,7 @@ class DeleteChannelLink extends React.Component {
     render() {
         return(
             <a href='#' onClick={(e) => this.onClick(e)}>
-                delete channel
+                Delete channel
             </a>
         )
     }

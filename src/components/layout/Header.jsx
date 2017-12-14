@@ -34,7 +34,7 @@ export class Header extends React.Component {
         var channelName = this.props.channelName ?
             <div>
                 <strong>#{this.props.channelName} </strong> <br/>
-                <a href='#' onClick={(e) => this.handleInvite(e)}>Invite users</a> {' '}
+                <a href='#' onClick={(e) => this.handleInvite(e)}>Invite users</a> {' | '}
                 {actionLink} <br/>
             </div>
             : "no active channel"

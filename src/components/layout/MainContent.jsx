@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { MessagesForm } from '../../containers-redux/messages/MessagesForm'
 import { MainContentItem } from '../../containers-redux/layout/MainContentItem'
+import { StyledMainContent } from './MainContent.styles'
 
 var style = {
     margin: '0px 0px 0px 240px',
@@ -15,11 +16,11 @@ class MainContent extends React.Component {
 
         let content = this.props.activeChannel
             ? <div>
-                <div>
+                <StyledMainContent>
                     <ul>
                         {messages}
                     </ul>
-                </div>
+                </StyledMainContent>
                 <MessagesForm/>
             </div>
             : <div>

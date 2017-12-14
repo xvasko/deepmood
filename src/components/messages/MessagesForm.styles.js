@@ -13,7 +13,7 @@ export const StyledMessagesForm = styled.div`
         padding: 12px 12px 15px 12px;
         border-radius: 43px;
         border: 2px gray solid;
-        width: 400px;
+        width: 500px;
         
         &:focus {
             outline: 0;
