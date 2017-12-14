@@ -15,8 +15,8 @@ const mapDispatchToProps = (dispatch) => ({
     onCloseInviteUsersModal: () => {
         dispatch(closeInviteUsersModal());
     },
-    onUserInvite: (channelId, customData) => {
-        dispatch(updateChannel(channelId, customData))
+    onUserInvite: (channelId, channelName, customData) => {
+        dispatch(updateChannel(channelId, channelName, customData))
     }
 });
 

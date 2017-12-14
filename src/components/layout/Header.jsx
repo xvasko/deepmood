@@ -18,7 +18,7 @@ export class Header extends React.Component {
             alert('Can\'t leave channel. You are the owner.');
             return;
         } else {
-            this.props.onLeaveChannel(this.props.channelId, JSON.stringify(customData.users.filter(usr => usr !== this.props.userEmail)))
+            this.props.onLeaveChannel(this.props.channelId, this.props.channelName, JSON.stringify(customData.users.filter(usr => usr !== this.props.userEmail)))
         }
     }
 
@@ -28,14 +28,14 @@ export class Header extends React.Component {
 
     handleChannelNameChange(e) {
         e.preventDefault()
-        var newChannelName = window.prompt('Rename channel ' + this.props.channelName, '');
-
+        let newChannelName = window.prompt('Rename channel ' + this.props.channelName, '');
+        let users = this.getChannelCustomData();
         if (newChannelName == null) {
             return;
-        } else if (newChannelName == '') {
+        } else if (newChannelName === '') {
             window.alert('Invalid channel name')
         } else {
-            this.props.onChannelChangeName(newChannelName);
+            this.props.onChannelChangeName(this.props.channelId, newChannelName, JSON.stringify(users.users));
         }
     }
 

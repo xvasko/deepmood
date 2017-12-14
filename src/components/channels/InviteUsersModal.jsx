@@ -47,7 +47,7 @@ export class InviteUsersModal extends React.Component {
         e.preventDefault()
         var users = this.getChannelUsers()
         users.push(user)
-        this.props.onUserInvite(this.props.activeChannel, JSON.stringify(users))
+        this.props.onUserInvite(this.props.activeChannel, this.props.channel.name, JSON.stringify(users))
     }
 
     render() {

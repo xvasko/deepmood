@@ -10,7 +10,7 @@ export class BrowseChannelsModal extends React.Component {
         e.preventDefault();
         var newUsers = JSON.parse(channel.customData).users
         newUsers.push(this.props.userEmail)
-        this.props.onJoinChannel(channel.id, JSON.stringify(newUsers))
+        this.props.onJoinChannel(channel.id, channel.name, JSON.stringify(newUsers))
     }
 
     decorateChannel(channel) {

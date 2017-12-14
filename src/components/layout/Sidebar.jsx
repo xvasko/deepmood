@@ -6,16 +6,6 @@ import { SidebarItem } from '../../containers-redux/layout/SidebarItem'
 import { getCurrentUser } from '../../utils/getCurrentUser'
 import { StyledSidebar } from './Sidebar.styles'
 
-var style = {
-    position: 'fixed',
-    top: '0px',
-    left: '0px',
-    bottom: '0px',
-    width: '200px',
-    background: 'rgb(66, 165, 245)',
-    padding: '10px 20px'
-};
-
 class Sidebar extends React.Component {
     onOpenProfile(e) {
         e.preventDefault();

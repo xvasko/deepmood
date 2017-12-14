@@ -52,6 +52,8 @@ export const StyledSidebar = styled.div`
         }
         .active {
             background-color: #80DEEA;
+            height: 40px;
+            
             a {
                 color: #00838F;
             }

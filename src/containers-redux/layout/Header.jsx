@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { Header } from '../../components/layout/Header';
-import { changeActiveChannel, closeInviteUsersModal, openInviteUsersModal } from '../../actions/channels/actionCreators'
+import { changeActiveChannel, openInviteUsersModal } from '../../actions/channels/actionCreators'
 import { updateChannel } from '../../actions/channels/updateChannel'
 
 const mapStateToProps = (state) => {
@@ -19,12 +19,12 @@ const mapDispatchToProps = (dispatch) => ({
     onOpenInviteUsersModal: () => {
         dispatch(openInviteUsersModal());
     },
-    onLeaveChannel: (channelId, newUsers) => {
-        dispatch(updateChannel(channelId, newUsers));
+    onLeaveChannel: (channelId, channelName, newUsers) => {
+        dispatch(updateChannel(channelId, channelName, newUsers));
         dispatch(changeActiveChannel(null));
     },
-    onChannelChangeName: (channelId, newChannelName) => {
-
+    onChannelChangeName: (channelId, newChannelName, users) => {
+        dispatch(updateChannel(channelId, newChannelName, users));
     }
 });
 

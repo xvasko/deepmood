@@ -37,10 +37,11 @@ export const removeChannelAction = (channelId) => ({
     payload: channelId,
 })
 
-export const updateChannelAction = (channelId, newCustomData) => ({
+export const updateChannelAction = (channelId, channelName, newCustomData) => ({
     type: 'CHANNELS_UPDATE_CHANNEL',
     payload: {
         channelId: channelId,
+        channelName: channelName,
         newCustomData: newCustomData
     }
 })

@@ -15,8 +15,8 @@ const mapDispatchToProps = (dispatch) => ({
     onCloseBrowseModal: () => {
         dispatch(closeBrowseChannelsModal())
     },
-    onJoinChannel: (channelId, newUsers) => {
-        dispatch(updateChannel(channelId, newUsers))
+    onJoinChannel: (channelId, channelName, newUsers) => {
+        dispatch(updateChannel(channelId, channelName, newUsers))
     }
 });
 

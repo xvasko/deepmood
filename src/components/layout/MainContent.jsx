@@ -23,9 +23,7 @@ class MainContent extends React.Component {
                 </StyledMainContent>
                 <MessagesForm/>
             </div>
-            : <div>
-                <h3>Browse channels and join them! Or you can create your own.</h3>
-            </div>
+            : null
 
         return (
             <div style={style}>

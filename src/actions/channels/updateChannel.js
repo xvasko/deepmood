@@ -3,7 +3,7 @@ import axios from 'axios';
 import { createProfileChannels, removeProfileChannels } from '../profile/updateProfileChannels'
 import { updateChannelAction } from './actionCreators'
 
-export const updateChannel = (id, newUsers) =>
+export const updateChannel = (id, channelName, newUsers) =>
     (dispatch, getState) => {
         let channel = getState().channels.byId.get(id);
         let customData = channel.customData;
@@ -12,7 +12,7 @@ export const updateChannel = (id, newUsers) =>
             JSON.stringify(
                 [
                     {
-                        "value":{"id": id, "name": channel.name, "customData": newCustomData},
+                        "value":{"id": id, "name": channelName, "customData": newCustomData},
                         "path": "/channels/" + id,
                         "op": "replace",
                         "from": getState().profile.profileDetails.email
@@ -23,11 +23,13 @@ export const updateChannel = (id, newUsers) =>
         .then((result) => {
             let addUser = JSON.parse(newUsers).length > JSON.parse(getState().channels.byId.get(id).customData).users.length
             let removeUser = JSON.parse(newUsers).length < JSON.parse(getState().channels.byId.get(id).customData).users.length
-            dispatch(updateChannelAction(id, newCustomData));
+            dispatch(updateChannelAction(id, channelName, newCustomData));
             if(addUser) {
                 dispatch(createProfileChannels(getState().profile.profileDetails.email))
             } else if (removeUser) {
                 dispatch(removeProfileChannels(id))
+            } else {
+                dispatch(createProfileChannels(getState().profile.profileDetails.email))
             }
         })
         .catch((error) =>
