@@ -2,13 +2,7 @@ import * as React from 'react';
 import { MessagesForm } from '../../containers-redux/messages/MessagesForm'
 import { MainContentItem } from '../../containers-redux/layout/MainContentItem'
 import { DeleteChannelLink } from '../../containers-redux/channels/DeleteChannelLink'
-
-var style = {
-    margin: '0px 0px 0px 240px',
-    height: '60px',
-    background: 'white',
-    borderBottom: '1px solid gray'
-};
+import { StyledHeader } from './Header.styles'
 
 export class Header extends React.Component {
 
@@ -40,15 +34,15 @@ export class Header extends React.Component {
         var channelName = this.props.channelName ?
             <div>
                 <strong>#{this.props.channelName} </strong> <br/>
-                <a href='#' onClick={(e) => this.handleInvite(e)}>Invite users</a> <br/>
+                <a href='#' onClick={(e) => this.handleInvite(e)}>Invite users</a> {' '}
                 {actionLink} <br/>
             </div>
             : "no active channel"
 
         return (
-            <div style={style}>
+            <StyledHeader>
                 {channelName}
-            </div>
+            </StyledHeader>
         )
     }
 }

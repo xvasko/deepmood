@@ -16,6 +16,7 @@ export const StyledSidebar = styled.div`
     
     a {
         font-size: 20px;
+        outline: 0;
         &:hover {
             text-decoration: none;
             color: #01579B;
