@@ -6,6 +6,10 @@ import { Avatar } from '../../containers-redux/profile/Avatar'
 
 ReactModal.setAppElement('#root');
 
+let style= {
+    padding: '20px'
+}
+
 export class InviteUsersModal extends React.Component {
     constructor(props) {
         super(props);
@@ -28,9 +32,9 @@ export class InviteUsersModal extends React.Component {
         var channelUsers = this.getChannelUsers();
         return users.map(user => {
             if(channelUsers.includes(user)) {
-                return <li key={user.email + 'x'}>{user} <i>(already in channel)</i></li>
+                return <li key={user.email + 'x'}><b>{user}</b> <i>(already in channel)</i></li>
             } else {
-                return <li key={user.email + 'x'}>{user} <a href='#' onClick={(e) => this.inviteUser(e, user)}>invite</a></li>
+                return <li key={user.email + 'x'}><b>{user}</b> <a href='#' onClick={(e) => this.inviteUser(e, user)}>invite</a></li>
             }
         })
     }
@@ -57,7 +61,7 @@ export class InviteUsersModal extends React.Component {
             >
                 <h2>Search users</h2>
                 <input type="text" value={this.state.term} onChange={(e) => this.handleChange(e)} placeholder='search user'/>
-                <ul>
+                <ul style={style}>
                     {searchedUsers}
                 </ul>
                 <button onClick={() => this.props.onCloseInviteUsersModal()}>Close Modal</button>

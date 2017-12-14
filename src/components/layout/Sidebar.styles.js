@@ -30,6 +30,8 @@ export const StyledSidebar = styled.div`
         margin: 0px;
         
         li {
+            height: 40px;
+            
             &:hover {
                     background-color: #80DEEA;
             }
@@ -37,6 +39,7 @@ export const StyledSidebar = styled.div`
                 display: inline-block;
                 width: 100%;
                 padding-left: 20px;
+                padding-top: 5px;
                 color: #01579B;
                 font-size: 18px;
                 

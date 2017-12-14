@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch) => ({
     onLeaveChannel: (channelId, newUsers) => {
         dispatch(updateChannel(channelId, newUsers));
         dispatch(changeActiveChannel(null));
+    },
+    onChannelChangeName: (channelId, newChannelName) => {
+
     }
 });
 
