@@ -18,12 +18,24 @@ export class LoginForm extends React.Component {
     render () {
         return (
             <form onSubmit={(e) => this.handleSubmit(e)} style={{minHeight: '250px'}}>
-                <label>Username / Email</label>
-                <input type='email' value={this.state.value} onChange={(e) => this.handleChange(e)}/>
+                <div className="form-group">
+                    <label htmlFor="email">Email address</label>
+                    <input
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter email"
+                        value={this.state.value}
+                        onChange={(e) => this.handleChange(e)}
+                    />
+                    <small id="emailHelp" className="form-text text-muted">We might share your email with someone else. But probably not.</small>
+                </div>
                 <br/>
                 <input
                     type='submit'
                     value='Log in'
+                    className="btn btn-primary red"
                 />
             </form>
         );
