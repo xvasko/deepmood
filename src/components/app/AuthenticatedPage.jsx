@@ -5,14 +5,25 @@ import { ProfileModal } from '../../containers-redux/profile/ProfileModal'
 import { Header } from '../../containers-redux/layout/Header'
 import { InviteUsersModal } from '../../containers-redux/channels/InviteUsersModal'
 import { BrowseChannelsModal } from '../../containers-redux/channels/BrowseChannelsModal'
+import { initialDataFetch } from '../../actions/shared/initialDataFetch'
 
-export const AuthenticatedPage = () => (
-    <div>
-        <SidebarRedux />
-        <Header />
-        <MainContent />
-        <ProfileModal />
-        <InviteUsersModal />
-        <BrowseChannelsModal />
-    </div>
-);
+export class AuthenticatedPage extends React.Component {
+
+    componentWillMount() {
+        this.props.initialFetch();
+    }
+
+    render() {
+        return (
+            <div>
+                <SidebarRedux />
+                <Header />
+                <MainContent />
+                <ProfileModal />
+                <InviteUsersModal />
+                <BrowseChannelsModal />
+            </div>
+        )
+    }
+}
+
