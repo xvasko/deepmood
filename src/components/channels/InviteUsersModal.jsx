@@ -56,6 +56,7 @@ export class InviteUsersModal extends React.Component {
             <ReactModal
                 isOpen={this.props.isOpen}
                 shouldCloseOnOverlayClick={true}
+                shouldReturnFocusAfterClose={false}
             >
                 <h2>Search users</h2>
                 <input type="text" value={this.state.term} onChange={(e) => this.handleChange(e)} placeholder='search user'/>

@@ -24,6 +24,7 @@ export class ProfileModal extends React.Component {
             <ReactModal
                 isOpen={this.props.isOpen}
                 shouldCloseOnOverlayClick={true}
+                shouldReturnFocusAfterClose={false}
                 style={customStyles}
             >
                 <div className="row">

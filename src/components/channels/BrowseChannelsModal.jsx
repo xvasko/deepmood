@@ -28,6 +28,7 @@ export class BrowseChannelsModal extends React.Component {
         return (
             <ReactModal
                 isOpen={this.props.isOpen}
+                shouldReturnFocusAfterClose={false}
             >
                 <h2>Browse channels</h2>
                 <ul>
