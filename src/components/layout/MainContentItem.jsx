@@ -92,15 +92,15 @@ export class MainContentItem extends React.Component {
             message =
                 <div>
                     <textarea value={this.state.editingMessage} onChange={(e) => this.handleChange(e)} />
-                    <a href={'#'} className='update' onClick={(e) => this.onUpdateClick(e)}>UPDATE</a>
-                    <a href={'#'} className='cancel' onClick={(e) => this.onCancelClick(e)}>CANCEL</a>
+                    <a href={'/'} className='update' onClick={(e) => this.onUpdateClick(e)}>UPDATE</a>
+                    <a href={'/'} className='cancel' onClick={(e) => this.onCancelClick(e)}>CANCEL</a>
                 </div>
         } else {
             message = this.props.value;
         }
         let thumbs = null;
         if (this.getCustomData().upVotes.length > 0 || this.getCustomData().downVotes.length > 0) {
-            thumbs = <span>&#128077; {this.getCustomData().upVotes.length} &#128078; {this.getCustomData().downVotes.length}</span>
+            thumbs = <span role='img' aria-label='thumbs'>&#128077; {this.getCustomData().upVotes.length} &#128078; {this.getCustomData().downVotes.length}</span>
         }
         return (
             <StyledListItem>

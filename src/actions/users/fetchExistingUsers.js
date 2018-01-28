@@ -17,9 +17,10 @@ export const fetchExistingUsers = () =>
                     if (avatarId !== 'null') {
                         axios.get(`https://pv247messaging.azurewebsites.net/api/file/${avatarId}/download-link`,
                             getAuthorizedHeader(getState().authentication.token.data))
-                            .then(response =>  dispatch(fetchExistingUsersAction({...payload, avatarUri: response.data})))
+                            .then(response => { return dispatch(fetchExistingUsersAction({...payload, avatarUri: response.data}))})
                     }
                 }
+                return {};
             })
         })
         .catch((error) =>

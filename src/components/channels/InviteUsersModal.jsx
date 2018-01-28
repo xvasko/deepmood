@@ -1,8 +1,6 @@
 import React from 'react';
 
 import ReactModal from 'react-modal';
-import { ProfileForm } from '../../containers-redux/profile/ProfileForm'
-import { Avatar } from '../../containers-redux/profile/Avatar'
 
 ReactModal.setAppElement('#root');
 
@@ -29,12 +27,12 @@ export class InviteUsersModal extends React.Component {
     }
 
     decorateUsers(users) {
-        var channelUsers = this.getChannelUsers();
+        let channelUsers = this.getChannelUsers();
         return users.map(user => {
             if(channelUsers.includes(user)) {
                 return <li key={user.email + 'x'}><b>{user}</b> <i>(already in channel)</i></li>
             } else {
-                return <li key={user.email + 'x'}><b>{user}</b> <a href='#' onClick={(e) => this.inviteUser(e, user)}>invite</a></li>
+                return <li key={user.email + 'x'}><b>{user}</b> <a href='/' onClick={(e) => this.inviteUser(e, user)}>invite</a></li>
             }
         })
     }
@@ -45,13 +43,13 @@ export class InviteUsersModal extends React.Component {
 
     inviteUser(e, user) {
         e.preventDefault()
-        var users = this.getChannelUsers()
+        let users = this.getChannelUsers()
         users.push(user)
         this.props.onUserInvite(this.props.activeChannel, this.props.channel.name, JSON.stringify(users))
     }
 
     render() {
-        var searchedUsers = this.state.searchedUsers ?
+        let searchedUsers = this.state.searchedUsers ?
             this.decorateUsers(this.state.searchedUsers) :
             this.decorateUsers(this.state.users)
         return (

@@ -28,7 +28,7 @@ export class ProfileModal extends React.Component {
             >
                 <div className="row">
                     <div className="col-12">
-                        <h4 class="card-title">Profile</h4>
+                        <h4 className="card-title">Profile</h4>
                         <Avatar height={'285px'}/>
                         <ProfileForm />
                         <br/>

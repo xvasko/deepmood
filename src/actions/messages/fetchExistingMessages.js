@@ -13,7 +13,7 @@ export const fetchExistingMessages = (channelId) =>
             dispatch(changeActiveChannel(channelId));
 
             result.data
-                .filter(message => !getState().messages.byChannelId.get(channelId).some(m => m.id == message.id))
+                .filter(message => !getState().messages.byChannelId.get(channelId).some(m => m.id === message.id))
                 .map(message => dispatch(createMessageAction(channelId, result.data.pop())))
         })
         .catch((error) =>

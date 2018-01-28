@@ -15,7 +15,7 @@ export const createChannel = (name) =>
                 .filter(channel => !getState().channels.allIds.includes(channel.id))
                 .map(channel => {
                     dispatch(createChannelAction(channel));
-                    dispatch(createProfileChannels(getState().profile.profileDetails.email))
+                    return dispatch(createProfileChannels(getState().profile.profileDetails.email))
                 })
         )
         .catch((error) =>

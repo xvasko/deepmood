@@ -8,12 +8,14 @@ export const profileChannels = (state =  Immutable.List(), action) => {
                     state = state.push(channel.id)
                 }
             })
-            break;
+            return state;
         case 'PROFILE_CHANNELS_REMOVE':
             if (state.includes(action.payload.id)) {
-                state = state.filter(id => id !== action.payload.id)
+                return state = state.filter(id => id !== action.payload.id)
+            } else {
+                return state;
             }
-            break;
+        default:
+            return state;
     }
-    return state;
 };

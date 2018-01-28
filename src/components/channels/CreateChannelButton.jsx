@@ -8,7 +8,7 @@ class CreateChannelButton extends React.Component {
 
         if (name == null) {
             return;
-        } else if (name == '') {
+        } else if (name === '') {
             window.alert('Invalid channel name')
         } else {
             this.props.onClick(name);

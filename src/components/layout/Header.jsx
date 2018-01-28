@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { MessagesForm } from '../../containers-redux/messages/MessagesForm'
-import { MainContentItem } from '../../containers-redux/layout/MainContentItem'
 import { DeleteChannelLink } from '../../containers-redux/channels/DeleteChannelLink'
 import { StyledHeader } from './Header.styles'
 
@@ -13,7 +11,7 @@ export class Header extends React.Component {
 
     handleLeave(e) {
         e.preventDefault();
-        var customData = this.getChannelCustomData()
+        let customData = this.getChannelCustomData()
         if (this.props.userEmail === customData.owner) {
             alert('Can\'t leave channel. You are the owner.');
             return;
@@ -42,16 +40,16 @@ export class Header extends React.Component {
     render() {
         let actionLink = this.getChannelCustomData().owner === this.props.userEmail
             ? <DeleteChannelLink channelId={this.props.channelId} channelName={this.props.channelName} />
-            : <a href='#' onClick={(e) => this.handleLeave(e)}>Leave channel</a>
+            : <a href='/' onClick={(e) => this.handleLeave(e)}>Leave channel</a>
 
         let editButton = this.getChannelCustomData().owner === this.props.userEmail
-            ? <a href='#' onClick={(e) => this.handleChannelNameChange(e)}>&#9998;</a>
+            ? <a href='/' onClick={(e) => this.handleChannelNameChange(e)}>&#9998;</a>
             : null
 
         let channelName = this.props.channelName ?
             <div>
                 <strong>#{this.props.channelName} </strong> {' '} {editButton} <br/>
-                <a href='#' onClick={(e) => this.handleInvite(e)}>Invite users</a> {' | '}
+                <a href='/' onClick={(e) => this.handleInvite(e)}>Invite users</a> {' | '}
                 {actionLink} <br/>
             </div>
             : <h4 style={{margin: '10px'}}>select a channel</h4>

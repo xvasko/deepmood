@@ -11,19 +11,19 @@ const initialState = {
 export const profileDetails = (state = initialState, action) => {
     switch (action.type) {
         case 'PROFILE_DETAILS_FETCH':
-            var customData = JSON.parse(action.payload.customData);
-            state = {
+            let customData = JSON.parse(action.payload.customData);
+            return state = {
                 email: action.payload.email,
                 name: customData.name,
                 phone: customData.phone,
                 avatarId: (customData.avatarId === "null" ? null : customData.avatarId),
             }
-            break;
         case 'PROFILE_UPDATE_AVATAR_ID':
-            state = {
+            return state = {
                 ...state,
                 avatarId: action.payload.id
-            }
+            };
+        default:
+            return state;
     }
-    return state;
 };

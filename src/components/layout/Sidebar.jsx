@@ -23,12 +23,12 @@ class Sidebar extends React.Component {
             <StyledSidebar>
                 <div style={{padding: '10px 20px'}}>
                     <span>
-                    Logged as <a href={'#'} onClick={(e) => this.onOpenProfile(e)}>{getCurrentUser()}</a><br/>
+                    Logged as <a href='/' onClick={(e) => this.onOpenProfile(e)}>{getCurrentUser()}</a><br/>
                         <LogoutButton />
                     </span>
                     <br/>
                     <br/>
-                    <a href='#' onClick={(e) => this.onOpenBrowse(e)}>Channels</a> <CreateChannelButton />
+                    <a href='/' onClick={(e) => this.onOpenBrowse(e)}>Channels</a> <CreateChannelButton />
                 </div>
                 <Loader stateLoadingSelector={state => state.channels.isFetchingChannels}>
                     <ul style={{minHeight: '250px'}}>
