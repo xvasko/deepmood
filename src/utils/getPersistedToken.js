@@ -19,7 +19,7 @@ const removeInvalidToken = () => {
 export const getPersistedToken = () => {
     const persistedTokenJSON = localStorage.getItem('sharedAuthenticationToken') || null;
 
-    if(!isTokenTimestampValid) {
+    if(!isTokenTimestampValid()) {
         removeInvalidToken();
         return null;
     }

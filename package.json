@@ -10,6 +10,7 @@
     "immutable": "^3.8.2",
     "isomorphic-fetch": "^2.2.1",
     "jwt-decode": "^2.2.0",
+    "jwt-simple": "^0.5.1",
     "memoizee": "^0.4.11",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
@@ -36,5 +37,8 @@
     "jest-mock-axios": "^1.0.21",
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.4.0"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./__mocks__/localStorage.js"
   }
 }
