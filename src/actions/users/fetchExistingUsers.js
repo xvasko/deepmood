@@ -5,7 +5,7 @@ import { fetchExistingUsersAction } from './actionCreators'
 
 export const fetchExistingUsers = () =>
     (dispatch, getState) => {
-        axios.get('https://pv247messaging.azurewebsites.net/api/6facb4bd-c869-4cd3-8fe8-af81e15a5502/user',
+        return axios.get('https://pv247messaging.azurewebsites.net/api/6facb4bd-c869-4cd3-8fe8-af81e15a5502/user',
             getAuthorizedHeader(getState().authentication.token.data)
         )
         .then(result => {

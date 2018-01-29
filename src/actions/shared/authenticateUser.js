@@ -20,8 +20,16 @@ export const authenticateUser = (email) =>
             .then(token => {
                 postponeFor(500).then(() => {
                     dispatch(receiveValidToken(token));
-                    dispatch(push('/'));
-                    dispatch(fetchAuthData(email));
+                    dispatch(fetchAuthData(email)).then(() => {
+                        if (!Array.from(getState().users.byId.keys()).includes(email)) {
+                            throw new Error("Error");
+                        }
+                        dispatch(push('/'));
+                    }).catch(error => {
+                        dispatch(stopAuthentication())
+                        const dispatchedAction = dispatch(failAuthentication('You are looking for a different PV247 project', error));
+                        setTimeout(() => dispatch(dismissError(dispatchedAction.payload.error.id)), 3500);
+                    });
                 })
 
                 localStorage.setItem('sharedAuthenticationToken', JSON.stringify(token));
