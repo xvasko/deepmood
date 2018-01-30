@@ -1,6 +1,5 @@
 import { fetchProfileDetailsAction, updateAvatarIdAction } from '../../actions/profile/actionCreators'
 import { profileDetails } from './profileDetails'
-import * as Immutable from "immutable"
 
 describe('profile details reducer', () => {
 
