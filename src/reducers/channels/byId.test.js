@@ -1,9 +1,6 @@
 import { createChannelAction, removeChannelAction, updateChannelAction } from '../../actions/channels/actionCreators'
-import { allIds } from './allIds'
 import * as Immutable from 'immutable'
-import { removeChannel } from '../../actions/channels/removeChannel'
 import { byId } from './byId'
-import { updateChannel } from '../../actions/channels/updateChannel'
 
 describe('by id channel reducer', () => {
 
