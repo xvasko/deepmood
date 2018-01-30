@@ -1,6 +1,6 @@
 import * as Immutable from "immutable"
 
-export const profileChannels = (state =  Immutable.List(), action) => {
+export const profileChannels = (state = Immutable.List(), action) => {
     switch (action.type) {
         case 'PROFILE_CHANNELS_CREATE':
             action.payload.channels.forEach(channel => {

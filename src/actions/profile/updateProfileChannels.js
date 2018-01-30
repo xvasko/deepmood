@@ -1,6 +1,6 @@
 export const createProfileChannels = (userEmail) =>
     (dispatch, getState) => {
-        dispatch(({type: 'PROFILE_CHANNELS_CREATE', payload: {channels: Array.from(getState().channels.byId.values()), userEmail: userEmail}}))
+        dispatch({type: 'PROFILE_CHANNELS_CREATE', payload: {channels: Array.from(getState().channels.byId.values()), userEmail: userEmail}})
     }
 
 export const removeProfileChannels = (id) =>
@@ -8,5 +8,9 @@ export const removeProfileChannels = (id) =>
         dispatch({type: 'PROFILE_CHANNELS_REMOVE', payload: { id: id }})
     }
 
+export const createProfileChannelsFactory = (getState, userEmail) =>
+    (dispatch) => {
+        dispatch({type: 'PROFILE_CHANNELS_CREATE', payload: {channels: Array.from(getState().channels.byId.values()), userEmail: userEmail}})
+    }
 
 
