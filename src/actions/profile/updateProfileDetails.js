@@ -5,7 +5,7 @@ import { fetchProfileDetailsAction } from './actionCreators'
 
 export const updateProfileDetails = (email, customData) =>
     (dispatch, getState) => {
-        axios.put(`https://pv247messaging.azurewebsites.net/api/6facb4bd-c869-4cd3-8fe8-af81e15a5502/user/${email}`,
+        return axios.put(`https://pv247messaging.azurewebsites.net/api/6facb4bd-c869-4cd3-8fe8-af81e15a5502/user/${email}`,
             JSON.stringify(`{ "name": "${customData.name}", "phone": "${customData.phone}", "avatarId": "${customData.avatarId}"}`),
             getAuthorizedHeader(getState().authentication.token.data)
         )

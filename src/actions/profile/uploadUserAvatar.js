@@ -10,18 +10,16 @@ export const uploadUserAvatar = (file) =>
             throw new Error('Avatar type is not supported or the system could not load the file.');
         }
 
-        var formData = new FormData();
+        let formData = new FormData();
         formData.append('Files', file);
 
-        axios.post('https://pv247messaging.azurewebsites.net/api/file',
+        return axios.post('https://pv247messaging.azurewebsites.net/api/file',
             formData,
             getAuthorizedHeader(getState().authentication.token.data))
             .then(response => {
                     dispatch(updateAvatarIdAction(response.data[0]))
 
-                    var profileDetails = getState().profile.profileDetails;
-
-                    console.log(getState().profile.profileDetails)
+                    let profileDetails = getState().profile.profileDetails;
 
                     dispatch(updateProfileDetails(profileDetails.email, profileDetails))
                     dispatch(fetchUserAvatar(profileDetails.avatarId))
